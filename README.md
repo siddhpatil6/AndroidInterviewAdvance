@@ -35,7 +35,8 @@ Yes, it is possible to run an Android app in multiple processes. This can be ach
 
 However, it's important to note that running an app in multiple processes can have implications for performance and resource usage. Each additional process consumes memory and CPU resources, so it's generally recommended to use multiple processes only when necessary and to carefully consider the trade-offs involved.
 
-</h3>• What is AIDL? Enumerate the steps in creating a bounded service through AIDL.</h3>
+</h3>• What is AIDL? Enumerate the steps in creating a bounded service through AIDL.? </h3> <br>
+
 AIDL (Android Interface Definition Language) is a language specifically developed by Google for defining the interface requirements between a client and server in Android's inter-process communication (IPC). It allows you to define the programming interface that both the client and server agree upon in order to communicate with each other.
 
 To create a bounded service through AIDL, you need to follow these steps:
@@ -134,16 +135,16 @@ These steps outline the basic process of creating a bounded service in Android u
 
 A ContentProvider is a component in Android that manages access to a central repository of data. It provides a standard interface for interacting with the underlying data source, which can be a SQLite database, a file system, an in-memory data structure, or any other persistent storage mechanism. ContentProviders are typically used for sharing data between different applications, though they can also be used within a single application to manage access to shared data.
 
-ContentProviders offer several key features:
+<b>ContentProviders offer several key features:</b>
 
-Data Abstraction: ContentProviders abstract the underlying data source, allowing clients to interact with the data without needing to know its specific implementation details.
+<b>Data Abstraction:</b> ContentProviders abstract the underlying data source, allowing clients to interact with the data without needing to know its specific implementation details.
 
-Data Security: ContentProviders can enforce permissions to control access to the data, ensuring that only authorized clients can read or write data.
+<b>Data Security:</b> ContentProviders can enforce permissions to control access to the data, ensuring that only authorized clients can read or write data.
 
-Data Sharing: ContentProviders enable data sharing between different applications. By using a ContentProvider, an application can make its data accessible to other applications, subject to the permissions it defines.
+<b>Data Sharing:</b> ContentProviders enable data sharing between different applications. By using a ContentProvider, an application can make its data accessible to other applications, subject to the permissions it defines.
 
-Data Querying: ContentProviders support querying data using a structured query language (SQL)-like syntax, making it easy to retrieve specific subsets of data.
+<b>Data Querying:</b> ContentProviders support querying data using a structured query language (SQL)-like syntax, making it easy to retrieve specific subsets of data.
 
-Data Modification: ContentProviders support data modification operations, such as inserting, updating, and deleting data, ensuring that changes to the data are managed consistently.
+<b>Data Modification:</b> ContentProviders support data modification operations, such as inserting, updating, and deleting data, ensuring that changes to the data are managed consistently.
 
 Overall, ContentProviders play a crucial role in the Android platform's architecture by providing a standardized way to manage and share data between different parts of an application or between different applications.
