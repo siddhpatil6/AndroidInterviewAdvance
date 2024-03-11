@@ -137,19 +137,19 @@ A ContentProvider is a component in Android that manages access to a central rep
 
 <b>ContentProviders offer several key features:</b>
 
-<b>Data Abstraction:</b> 
+<b>Data Abstraction:</b> <br>
 ContentProviders abstract the underlying data source, allowing clients to interact with the data without needing to know its specific implementation details.
 
-<b>Data Security:</b> 
+<b>Data Security:</b> <br>
 ContentProviders can enforce permissions to control access to the data, ensuring that only authorized clients can read or write data.
 
-<b>Data Sharing:</b> 
+<b>Data Sharing:</b> <br>
 ContentProviders enable data sharing between different applications. By using a ContentProvider, an application can make its data accessible to other applications, subject to the permissions it defines.
 
-<b>Data Querying:</b> 
+<b>Data Querying:</b> <br>
 ContentProviders support querying data using a structured query language (SQL)-like syntax, making it easy to retrieve specific subsets of data.
 
-<b>Data Modification:</b> 
+<b>Data Modification:</b> <br>
 ContentProviders support data modification operations, such as inserting, updating, and deleting data, ensuring that changes to the data are managed consistently.
 
 Overall, ContentProviders play a crucial role in the Android platform's architecture by providing a standardized way to manage and share data between different parts of an application or between different applications.
