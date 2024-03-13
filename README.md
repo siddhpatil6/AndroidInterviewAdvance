@@ -154,7 +154,7 @@ ContentProviders support data modification operations, such as inserting, updati
 
 Overall, ContentProviders play a crucial role in the Android platform's architecture by providing a standardized way to manage and share data between different parts of an application or between different applications.
 
-<h1> </h1>
+<h1> How to find duplicates in array in kotlin ?</h1>
 We can use any function from the following to remove duplicates from an array in Kotlin:
 
 ```
@@ -262,3 +262,202 @@ Note:
 Similar to MutableSet but do NOT maintain the original order of items.
 Returns HashSet
 Here, as we have used it to remove duplicate mentors from the array, similarly, we can use it to remove any duplicate elements like strings, numbers, etc from an array.
+
+
+<h1>what is open keyword in kotlin?</h1>
+
+In Kotlin, we can mark a class, a function, or a variable with the open keyword like below:
+
+Class
+```
+open class Mentor {
+
+}
+```
+
+Function
+```
+open fun guide() {
+
+}
+```
+
+Variable
+```
+open val slotsAvailable = 5
+```
+
+Let's understand why we use the open keyword in Kotlin.
+
+open keyword with class
+The open keyword with the class means the class is open for the extension meaning that we can create a subclass of that open class.
+
+In Kotlin, all the classes are final by default meaning that they can not be inherited.
+
+Suppose we have a class Mentor:
+
+```
+class Mentor {
+
+}
+```
+
+We will not be able to create a subclass of the class.
+```
+class ExperiencedMentor: Mentor() {
+
+}
+```
+
+The compiler will show an error.
+
+This type is final, so it cannot be inherited from
+If we want to allow inheritance, we need to mark the class with the open keyword. Basically, opening it for the extension.
+
+Our updated Mentor class:
+
+```
+open class Mentor {
+
+}
+```
+
+Now, we will be able to create a subclass of this class.
+
+```
+class ExperiencedMentor: Mentor() {
+
+}
+```
+
+It will work perfectly.
+
+You must have noticed that it is completely opposite to what we do in Java.
+
+Let's see how it is different in Kotlin and Java.
+
+```
+In Java		In Kotlin
+final class Mentor { }	->	class Mentor { }
+class Mentor { }	->	open class Mentor { }
+```
+
+Basically, in Kotlin, all the classes are final by default but in Java, this is exactly the opposite. In Java, to make the class final, we need to use the final keyword.
+
+That is why we need the open keyword in Kotlin with the class to allow inheritance.
+
+open keyword with function
+Similar to the classes, all the functions in Kotlin are by default final meaning that you can't override a function.
+
+Consider a function guide() inside the Mentor class:
+
+```
+open class Mentor {
+
+    fun guide() {
+
+    }
+
+}
+```
+
+We will not be able to override the function.
+
+```
+class ExperiencedMentor : Mentor() {
+
+    override fun guide() {
+
+    }
+
+}
+```
+
+The compiler will show an error.
+
+guide' in 'Mentor' is final and cannot be overridden
+In order to allow the overriding of the function, we need to add the open keyword.
+
+Our updated Mentor class:
+
+```
+open class Mentor {
+
+    open fun guide() {
+
+    }
+}
+```
+
+We will be able to override the function now like below:
+
+```
+class ExperiencedMentor : Mentor() {
+
+    override fun guide() {
+
+    }
+}
+```
+
+It will work perfectly.
+
+Again, in Kotlin, all the functions are final by default but in Java, this is exactly the opposite. In Java, to make the function final, we need to use the final keyword.
+
+That is why we need the open keyword in Kotlin with the function to allow it to be overridden.
+
+open keyword with variable
+Similarly, the variables in Kotlin are final by default. So, to override it in the child class, we need to set the variables as open in our base class.
+
+Here is the base class Mentor:
+```
+open class Mentor {
+
+    val slotsAvailable = 5
+
+}
+```
+
+Here is the child class.
+```
+class ExperiencedMentor : Mentor() {
+
+    override val slotsAvailable = 10
+
+}
+```
+
+We will not be able to override the variable.
+
+The compiler will show an error.
+
+'slotsAvailable' in 'Mentor' is final and cannot be overridden
+In order to allow the overriding of the variable, we need to add the open keyword.
+
+Our updated Mentor class:
+```
+open class Mentor {
+
+    open val slotsAvailable = 5
+
+}
+```
+
+We will be able to override the variable now like below:
+
+```
+class ExperiencedMentor : Mentor() {
+
+    override val slotsAvailable = 10
+
+}
+```
+
+It will work perfectly.
+
+Again, in Kotlin, all the variables are final by default but in Java, this is exactly the opposite. In Java, to make the variable final, we need to use the final keyword.
+
+That is why we need the open keyword in Kotlin with the variable to allow it to be overridden.
+
+
+
