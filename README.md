@@ -496,3 +496,6 @@ private const val numberEleven = numberThree.plus(User().numberEight)
 // ERROR: numberEight is not visible because User() is in a different module than Internal.kt
 private const val numberEleven = numberThree.plus(User().numberEight)
 ```
+
+<h1>JvmStatic, JvmOverloads, JvmField Annotations in Kotlin</h1>
+https://medium.com/@anandgaur22/jvmstatic-jvmoverloads-jvmfield-annotations-in-kotlin-d856fe38fd92
