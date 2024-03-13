@@ -460,4 +460,39 @@ Again, in Kotlin, all the variables are final by default but in Java, this is ex
 That is why we need the open keyword in Kotlin with the variable to allow it to be overridden.
 
 
+<h1>What is internal modifier in kotlin ?</h1>
+The declarations marked with the internal modifier are visible everywhere in the same module.
 
+A module is a set of Kotlin files compiled together:
+
+an IntelliJ IDEA module;
+a Maven project;
+a Gradle source set (with the exception that the test source set can access the internal declarations of main);
+a set of files compiled with one invocation of the <kotlinc> Ant task.
+
+
+// Internal.kt file
+
+// Visible to everyone in the same module
+```
+internal const val numberThree = 3
+
+// Visible to everyone in the same module
+internal open class User() {
+    // Visible to everyone in the same module that has visibility on User
+    internal val numberEight = numberThree.plus(5)
+}
+```
+
+// SameModule.kt file
+```
+// numberThree is visible because this file is in the same module than Internal.kt
+// numberEight is visible because this file is in the same module than User
+private const val numberEleven = numberThree.plus(User().numberEight)
+```
+// DifferentModule.kt file
+```
+// ERROR: numberThree is not visible because this file is in a different module than Internal.kt
+// ERROR: numberEight is not visible because User() is in a different module than Internal.kt
+private const val numberEleven = numberThree.plus(User().numberEight)
+```
