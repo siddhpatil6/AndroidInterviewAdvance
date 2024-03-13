@@ -153,3 +153,112 @@ ContentProviders support querying data using a structured query language (SQL)-l
 ContentProviders support data modification operations, such as inserting, updating, and deleting data, ensuring that changes to the data are managed consistently.
 
 Overall, ContentProviders play a crucial role in the Android platform's architecture by providing a standardized way to manage and share data between different parts of an application or between different applications.
+
+<h1> </h1>
+We can use any function from the following to remove duplicates from an array in Kotlin:
+
+```
+distinct()
+toSet()
+toMutableSet()
+toHashSet()
+```
+
+Let's start learning one by one by example.
+
+Consider a data class Mentor like below:
+
+data class Mentor(val id: Int, val name: String)
+And, an array of Mentor:
+
+```
+val mentors = arrayOf(
+    Mentor(1, "Amit Shekhar"),
+    Mentor(2, "Anand Gaurav"),
+    Mentor(1, "Amit Shekhar"),
+    Mentor(3, "Lionel Messi"))
+```
+
+Remove duplicates using distinct()
+In Kotlin, we can use distinct() function available in Collection functions to remove duplicates.
+
+```
+val distinct = mentors.distinct()
+println(distinct)
+```
+
+This will print the following:
+
+```
+[Mentor(id=1, name=Amit Shekhar),
+Mentor(id=2, name=Anand Gaurav),
+Mentor(id=3, name=Lionel Messi)]
+```
+
+Note:
+
+Maintain the original order of items.
+Among equal elements of the given array, only the first one will be present in the output.
+Returns List
+Here, as we have used it to remove duplicate mentors from the array, similarly, we can use it to remove duplicate strings from an array.
+
+Remove duplicates using toSet()
+In Kotlin, we can use toSet() function available in Collection functions to remove duplicates.
+
+```
+val toSet = mentors.toSet()
+println(toSet)
+```
+
+This will print the following:
+
+```
+[Mentor(id=1, name=Amit Shekhar),
+Mentor(id=2, name=Anand Gaurav),
+Mentor(id=3, name=Lionel Messi)]
+```
+
+Note:
+
+Maintain the original order of items.
+Returns Set which is a read-only set. It means that we can't perform operations like add on the set. Next, we will see toMutableSet() which returns read/write set.
+Remove duplicates using toMutableSet()
+In Kotlin, we can use toMutableSet() function available in Collection functions to remove duplicates.
+
+```
+val toMutableSet = mentors.toMutableSet()
+println(toMutableSet)
+```
+
+This will print the following:
+```
+[Mentor(id=1, name=Amit Shekhar),
+Mentor(id=2, name=Anand Gaurav),
+Mentor(id=3, name=Lionel Messi)]
+```
+
+Note:
+
+Maintain the original order of items.
+Returns MutableSet which is a read/write set. It means that we can perform operations like add on the mutable set.
+Remove duplicates using toHashSet()
+In Kotlin, we can use toHashSet() function available in Collection functions to remove duplicates.
+
+```
+val toHashSet = mentors.toHashSet()
+println(toHashSet)
+```
+
+This will print the following:
+
+```
+[Mentor(id=3, name=Lionel Messi),
+Mentor(id=1, name=Amit Shekhar),
+Mentor(id=2, name=Anand Gaurav)]
+```
+
+Note:
+
+Similar to MutableSet but do NOT maintain the original order of items.
+Returns HashSet
+Here, as we have used it to remove duplicate mentors from the array, similarly, we can use it to remove any duplicate elements like strings, numbers, etc from an array.
