@@ -499,3 +499,105 @@ private const val numberEleven = numberThree.plus(User().numberEight)
 
 <h1>JvmStatic, JvmOverloads, JvmField Annotations in Kotlin</h1>
 https://medium.com/@anandgaur22/jvmstatic-jvmoverloads-jvmfield-annotations-in-kotlin-d856fe38fd92
+
+
+<h1> what is difference between letinit and lazy?</h1>
+<b>lateinit</b>
+<b>lazy</b>
+Let's begin with the lateinit property.
+
+<b>lateinit</b>
+lateinit in Kotlin is useful in a scenario when we do not want to initialize a variable at the time of the declaration and want to initialize it at some later point in time, but we make sure that we initialize it before use.
+
+One way(that is not a good way) to achieve this is by creating a nullable variable as below:
+
+```
+private var mentor: Mentor? = null
+```
+
+And as we all know that there is always a better way in Kotlin to achieve what we need.
+
+What if we do not want to make the variable nullable?
+
+The answer is lateinit.
+
+Let's update our code:
+
+```
+private lateinit var mentor: Mentor
+```
+
+Here, we can notice that the lateinit keyword and also the variable is non-nullable.
+
+That is what we wanted.
+
+And later we can initialize the variable when we need it as below:
+
+```
+fun bookASlot() {
+    mentor = Mentor()
+}
+```
+
+But we must take care that we initialize the variable before accessing it, or else it will throw the following exception.
+
+kotlin.UninitializedPropertyAccessException: lateinit property mentor has not been initialized
+In Kotlin, we also have a way to check if the lateinit variable is initialized or not.
+
+By using isInitialized:
+
+```
+if(this::mentor.isInitialized) {
+    // access mentor
+} else {
+    // do something else
+}
+```
+
+Things to consider when we use the lateinit property:
+
+Can be only used with the var keyword.
+Can be only used with a non-nullable variable.
+Should be used if the variable is mutable and can be initialized later.
+Should be used if you are sure about the initialization before use.
+This was about the lateinit property in Kotlin.
+
+Now, it's time to learn about the lazy property in Kotlin.
+
+lazy
+lazy in Kotlin is useful in a scenario when we want to create an object inside a class, but that object creation is expensive and that might lead to a delay in the creation of the object that is dependent on that expensive object.
+
+```
+class Session {
+    private val mentor: Mentor = Mentor()
+}
+```
+
+Suppose Mentor is an expensive object. And Session is the object that is dependent on the Mentor object.
+
+If Mentor object creation takes time, it will delay the creation of Session object.
+
+So, this is where the lazy keyword in Kotlin will help us.
+
+Let's update our code:
+
+```
+class Session {
+    private val mentor: Mentor by lazy { Mentor() }
+}
+```
+
+Here, we have used the lazy keyword.
+
+So, we need to understand that the object mentor will get initialized only when it is accessed for the first time, else it will not get initialized.
+
+It will lead to the fast creation of the Session object in the above example because the Mentor object will not get initialized unnecessarily during the object creation of Session. It will get initialized when it is accessed for the first time.
+
+Things to consider when we use the lazy property:
+
+Can be only used with the val keyword, hence read-only property.
+We want the variable to be initialized only if we need it for the first time.
+Must understand that it only creates the object when we access it for the very first time and then in the subsequent access, it returns the same object.
+This was about the lazy property in Kotlin.
+
+Now we must have understood the lateinit vs lazy properties in Kotlin
