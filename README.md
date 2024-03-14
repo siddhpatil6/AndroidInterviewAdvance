@@ -6,6 +6,118 @@ Over 50% of professional developers who use coroutines have reported seeing incr
 This topic describes how you can use Kotlin coroutines to address these problems,
 enabling you to write cleaner and more concise app code.
 
+<h1>What is difference between async and await ?</h1>
+Both launch and async are the functions in Kotlin to start the Coroutines.
+
+launch{}
+async{}
+The difference is that the launch{} returns a Job and does not carry any resulting value whereas the async{} returns an instance of Deferred<T>, which has an await() function that returns the result of the coroutine like we have future in Java in which we do future.get() to get the result.
+
+In other words:
+
+launch: fire and forget.
+async: perform a task and return a result.
+Let's take an example to learn launch vs async.
+
+We can use the launch as below:
+
+```
+val job = GlobalScope.launch(Dispatchers.Default) {
+    // do something and do not return result
+}
+```
+
+It returns a job object which we can use to get a job's status or to cancel it.
+
+In the above example of launch, we have to do something and NOT return the result back.
+
+But when we need the result back, we need to use the async.
+
+```
+val deferredJob = GlobalScope.async(Dispatchers.Default) {
+    // do something and return result, for example 10 as a result
+    return@async 10
+}
+val result = deferredJob.await() // result = 10
+```
+
+Here, we get the result using the await().
+
+In async also, we can use the Deferred job object to get a job's status or to cancel it.
+
+Note: I have used GlobalScope for quick examples, we should avoid using it at all costs. In an Android project, we should use custom scopes based on our usecase such as lifecycleScope, viewModelScope and etc.
+
+Another difference between launch and async is in terms of exception handling.
+
+If any exception comes inside the launch block, it crashes the application if we have not handled it.
+
+However, if any exception comes inside the async block, it is stored inside the resulting Deferred and is not delivered anywhere else, it will get silently dropped unless we handle it.
+
+Let's understand this difference with code examples.
+
+Suppose we have a function that does something and throws an exception:
+
+```
+private fun doSomethingAndThrowException() {
+    throw Exception("Some Exception")
+}
+```
+Now using it with the launch:
+
+```
+GlobalScope.launch {
+    doSomethingAndThrowException()
+}
+```
+It will CRASH the application as expected.
+
+We can handle it as below:
+
+```
+GlobalScope.launch {
+    try {
+        doSomethingAndThrowException()
+    } catch (e: Exception) {
+        // handle exception
+    }
+}
+```
+Now, the exception will come inside the catch block and we can handle it.
+
+And now, using it with the async:
+
+```
+GlobalScope.async {
+    doSomethingAndThrowException()
+}
+```
+The application will NOT crash. The exception will get dropped silently.
+
+Again, we can handle it as below:
+
+```
+GlobalScope.async {
+    try {
+        doSomethingAndThrowException()
+    } catch (e: Exception) {
+        // handle exception
+    }
+}
+```
+Now, the exception will come inside the catch block and we can handle it.
+
+Let me tabulate the difference between launch and async.
+
+<b>Launch</b>
+Fire and forget. <br>
+launch{} returns a Job and does not carry any resulting value.	<br>
+If any exception comes inside the launch block, it crashes the application if we have not handled it.	<br>
+
+<b>Async</b>
+Perform a task and return a result.<br>
+async{} returns an instance of Deferred<T>, which has an await() function that returns the result of the coroutine.<br>
+If any exception comes inside the async block, it is stored inside the resulting Deferred and is not delivered anywhere else, it will get silently dropped unless we handle it.<br>
+
 
 <h3>• How can two distinct Android apps interact? </h3>
 
@@ -601,3 +713,4 @@ Must understand that it only creates the object when we access it for the very f
 This was about the lazy property in Kotlin.
 
 Now we must have understood the lateinit vs lazy properties in Kotlin
+
