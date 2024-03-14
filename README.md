@@ -714,3 +714,4 @@ This was about the lazy property in Kotlin.
 
 Now we must have understood the lateinit vs lazy properties in Kotlin
 
+<h1>What is Multidex in Android?</h1>
