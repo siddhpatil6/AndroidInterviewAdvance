@@ -108,12 +108,12 @@ Now, the exception will come inside the catch block and we can handle it.
 
 Let me tabulate the difference between launch and async.
 
-<b>Launch</b>
+<b>Launch</b><br>
 Fire and forget. <br>
 launch{} returns a Job and does not carry any resulting value.	<br>
 If any exception comes inside the launch block, it crashes the application if we have not handled it.	<br>
 
-<b>Async</b>
+<b>Async</b><br>
 Perform a task and return a result.<br>
 async{} returns an instance of Deferred<T>, which has an await() function that returns the result of the coroutine.<br>
 If any exception comes inside the async block, it is stored inside the resulting Deferred and is not delivered anywhere else, it will get silently dropped unless we handle it.<br>
