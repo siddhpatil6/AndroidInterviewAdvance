@@ -734,3 +734,236 @@ If we want to continue with the other tasks even when one fails, we go with the 
 <h1>withContext in Kotlin Coroutines: </h1>
 It does not launch a coroutine and it is just a "suspend function" used for shifting the context of the existing coroutine.<br>
 
+<h1> What is flow explain? </h1>
+Flow is an asynchronous data stream(which generally comes from a task) that emits values to the collector and gets completed with or without an exception.
+
+This will make more sense when we go through the example. Let's take a standard example of image downloading.
+
+Assume that we have a task: To download an image, emit the items(values) which are the percentage of the image downloading like 1%, 2%, 3%, and so on. It can get completed with or without an exception. If everything goes well, the task will be completed without an exception. But, in case of network failure, the task will be completed with an exception.
+
+So, there will be a task that will be done and will emit some values which will be collected by the collector.
+
+Now, let's discuss the major components of Flow.
+
+The major components of Flow are as below:
+
+Flow Builder
+Operator
+Collector
+Let's understand this with the following analogy.
+
+Flow Builder	->	Speaker
+Operator	->	Translator
+Collector	->	Listener
+
+<b>Flow Builder</b>
+In simple words, we can say that it helps in doing a task and emitting items. Sometimes it is just required to emit the items without doing any task, for example, just emit a few numbers (1, 2, 3). Here, the flow builder helps us in doing so. We can think of this as a Speaker. The Speaker will think(do a task) and speak(emit items).
+
+<b>Operator</b>
+The operator helps in transforming the data from one format to another.
+
+We can think of the operator as a Translator. Assume that the Speaker is speaking in French and the Collector(Listener) understands English only. So, there has to be a translator to translate French into English. That translator is an Operator.
+
+Operators are more than this actually, using the operator, we can also provide the thread on which the task will be done. We will see this later.
+
+<b>Collector</b>
+The collector collects the items emitted using the Flow Builder which are transformed by the operators.
+
+We can think of a collector as a Listener. Actually, Collector also comes under the operator which is known as Terminal Operator. The collector is a Terminal Operator. For now, we will skip the Terminal Operator as that is not needed for this blog on Flow API.
+
+<b>Flow API Source Code</b>
+
+The Flow interfaces look like the below in the source code of Coroutines:
+
+```
+public fun interface FlowCollector<in T> {
+
+    public suspend fun emit(value: T)
+
+}
+public interface Flow<out T> {
+
+    public suspend fun collect(collector: FlowCollector<T>)
+
+}
+```
+Hello World of Flow
+```
+flow {
+    (0..10).forEach {
+        emit(it)
+    }
+}.map {
+    it * it
+}.collect {
+    Log.d(TAG, it.toString())
+}
+```
+
+flow { }	->	Flow Builder
+map { }	->	Operator
+collect {}	->	Collector
+
+Let's go through the code.
+
+First, we have a flow builder which is emitting 0 to 10.
+Then, we have a map operator which will take each and every value and square(it * it). The map is Intermediate Operator.
+Then, we have a collector in which we get the emitted values and print them as 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100.
+Note: When we actually connect both the Flow Builder and the Collector using the collect method, then only, it will start executing.
+
+Now it's time to learn more about the Flow Builder.
+
+Types of flow builders
+There are 4 types of flow builders:
+
+flowOf(): It is used to create flow from a given set of items.
+asFlow(): It is an extension function that helps to convert type into flows.
+flow{}: This is what we have used in the Hello World example of Flow.
+channelFlow{}: This builder creates flow with the elements using send provided by the builder itself.
+Examples:
+
+flowOf()
+
+```
+flowOf(4, 2, 5, 1, 7)
+.collect {
+    Log.d(TAG, it.toString())
+}
+```
+asFlow()
+
+```
+(1..5).asFlow()
+.collect {
+    Log.d(TAG, it.toString())
+}
+```
+
+flow{}
+
+```
+flow {
+    (0..10).forEach {
+        emit(it)
+    }
+}
+.collect {
+    Log.d(TAG, it.toString())
+}
+```
+
+channelFlow{}
+
+```
+channelFlow {
+    (0..10).forEach {
+        send(it)
+    }
+}
+.collect {
+    Log.d(TAG, it.toString())
+}
+```
+
+At the end of this article, we will also learn to create Flow using Flow Builder. Now we need to learn about the flowOn operator.
+
+<b>flowOn Operator</b>
+
+flowOn Operator is very handy when it comes to controlling the thread on which the task will be done.
+
+Usually, in Android, we do a task on a background thread and show the result on the UI thread.
+
+Let's see this with an example: We have added a delay of 500 milliseconds inside the flow builder to simulate delay.
+
+```
+val flow = flow {
+    // Run on Background Thread (Dispatchers.Default)
+    (0..10).forEach {
+        // emit items with 500 milliseconds delay
+        delay(500)
+        emit(it)
+    }
+}
+.flowOn(Dispatchers.Default)
+```
+
+```
+CoroutineScope(Dispatchers.Main).launch {
+    flow.collect {
+        // Run on Main Thread (Dispatchers.Main)
+        Log.d(TAG, it.toString())
+    }
+}
+```
+
+Here the task inside the flow builder will be done on the background thread which is Dispatchers.Default.
+
+Now, we need to switch it to the UI thread. To achieve that, we need to wrap our collect API inside the launch with Dispatchers.Main.
+
+This is how the flowOn operator can be used to control the thread.
+
+flowOn() is like subscribeOn() in RxJava
+
+Dispatchers: They help in deciding the thread on which the work has to be done. There are majorly three types of Dispatchers which are IO, Default, and Main. IO dispatcher is used for network and disk-related tasks. Default is used for CPU-intensive work. The Main is the UI thread of Android.
+
+Now, we will learn how to create our Flow using the Flow builder. We can create our Flow for any task using the Flow Builder.
+
+Creating Flow Using Flow Builder
+Let's learn it through examples.
+
+1. Move File from one location to another location
+
+Here, we will create our Flow using the Flow Builder for moving the file from one location to another in the background thread and send the completion status on Main Thread.
+
+```
+val moveFileflow = flow {
+        // move file on background thread
+        FileUtils.move(source, destination)
+        emit("Done")
+}
+.flowOn(Dispatchers.IO)
+```
+
+```
+CoroutineScope(Dispatchers.Main).launch {
+    moveFileflow.collect {
+        // when it is done
+    }
+}
+```
+
+2. Downloading an Image
+
+Here, we will create our Flow using the Flow Builder for downloading the Image which will download the Image in the background thread and keep sending the progress to the collector on the Main thread.
+
+```
+val downloadImageflow = flow {
+        // start downloading
+        // send progress
+        emit(10)
+        // downloading...
+        // ......
+        // send progress
+        emit(75)
+        // downloading...
+        // ......
+        // send progress
+        emit(100)
+}
+.flowOn(Dispatchers.IO)
+```
+
+```
+CoroutineScope(Dispatchers.Main).launch {
+    downloadImageflow.collect {
+        // we will get the progress here
+    }
+}
+```
+
+This is how we can create our Flow.
+
+In Kotlin, Coroutine is just the scheduler part of RxJava but now with Flow API coming alongside it, it can be an alternative to RxJava in Android
+
+
+
