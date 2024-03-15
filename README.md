@@ -979,3 +979,188 @@ This is how we can create our Flow.
 
 In Kotlin, Coroutine is just the scheduler part of RxJava but now with Flow API coming alongside it, it can be an alternative to RxJava in Android
 
+
+<h1>What is companion or object?</h1>
+
+Before jumping into the companion object in Kotlin, we need to see how we use the static keyword in Java. <br>
+
+First, let's consider an example without the static keyword in Java. <br>
+
+```
+public class Mentor {
+
+    public void guide() {
+
+    }
+
+}
+```
+
+Here, if we have to call the method guide() , we will have to create an object of the Mentor class and then call.
+
+Mentor mentor = new Mentor();
+mentor.guide();
+So, how can we call the method without creating the object of the class?
+
+The answer is the static keyword in Java.
+
+Our updated Mentor class:
+
+```
+public class Mentor {
+
+    public static void guide() {
+
+    }
+
+}
+```
+
+Now, we can call directly without creating the object of the Mentor class.
+
+```
+Mentor.guide();
+```
+
+So, we are able to call the method without creating the object of the class in Java with the use of the static keyword.
+
+Now, the next big question is: Can we call a method in Kotlin without creating the object of a class like we just did for Java with the use of a static keyword?
+
+Answer: companion object.
+
+Note: We do not have a static keyword in Kotlin.
+
+In Kotlin, we can call a method of a class without creating the object of that class with the use of a companion object.
+
+Let's create a class Mentor in Kotlin:
+
+```
+class Mentor {
+
+    companion object {
+
+        fun guide() {
+
+        }
+
+    }
+}
+```
+
+Now, we can call the method guide() directly without creating the object of the class Mentor in Kotlin.
+
+Mentor.guide()
+Similarly, we can also access any variable. Let's add a variable inside the companion object.
+
+```
+class Mentor {
+
+    companion object {
+
+        const val MAX_SLOTS = 10
+
+        fun guide() {
+
+        }
+
+    }
+
+}
+```
+
+Now, we can access the variable:
+
+```
+val maxSlots = Mentor.MAX_SLOTS
+```
+We can also access as below:
+
+val maxSlots = Mentor.Companion.MAX_SLOTS
+Using the Companion object reference, but that is redundant.
+
+Note: The default name of a companion object is Companion.
+
+We can also name our companion object as we have done below:
+
+```
+class Mentor {
+
+    companion object Config {
+
+        const val MAX_SLOTS = 10
+
+    }
+
+}
+```
+
+We can access the variable as below without the companion reference name:
+
+val maxSlots = Mentor.MAX_SLOTS
+and also as below with the companion reference name:
+
+val maxSlots = Mentor.Config.MAX_SLOTS
+But the companion reference name is redundant.
+
+Important points to keep in mind while defining a companion object or using it:
+
+It cannot be defined outside a class.
+The object is common in all instances of the class.
+It is instantiated for the first time as soon as the containing class is loaded. It means that it is instantiated even if we have not used the companion object.
+Now, we might have started thinking about why there is a companion object when we already have a regular object in Kotlin.
+
+Example of the regular object in Kotlin.
+
+Defining outside a class:
+```
+object Config {
+
+    const val MAX_SLOTS = 10
+
+}
+```
+It can be accessed as below:
+
+```
+val maxSlots = Config.MAX_SLOTS
+```
+
+Defining inside a class:
+```
+class Mentor {
+
+    object Config {
+
+        const val MAX_SLOTS = 10
+
+    }
+
+}
+```
+
+It can be accessed as below:
+
+```
+val maxSlots = Mentor.Config.MAX_SLOTS
+```
+When defined inside a class, we can't skip the name while accessing it.
+
+However, this is not the case with the companion object. Companion object allows us to skip the name and access without using the name.
+
+Let me tabulate the differences between both of them for your better understanding so that you can decide which one to use based on your use case.
+
+Companion object	
+• It needs to be defined inside a class.	
+• The companion object is instantiated for the first time as soon as the containing class is loaded. 
+• It is equivalent to a static keyword in Java.	
+• Gets a default name as a Companion when we do not provide a name.
+• We can skip the name while calling a method or accessing a variable.
+
+Regular object -
+• It can be defined anywhere.
+• It means that it is instantiated even if we have not used the companion object.	The object is instantiated lazily when we access it for the first time.
+• Must be named by us.
+• If defined inside a class, we can't skip the name while calling a method or accessing a variable.
+• Mainly used for providing Singleton behavior.
+
+
