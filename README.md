@@ -802,7 +802,7 @@ flow {
 
 ```
 flow { }	->	Flow Builder
-map { }	->	Operator
+map { }	    ->	Operator
 collect {}	->	Collector
 ```
 
