@@ -747,14 +747,15 @@ Now, let's discuss the major components of Flow.
 
 The major components of Flow are as below:
 
-Flow Builder
-Operator
-Collector
-Let's understand this with the following analogy.
+<b>Flow Builder</b>
+• Operator
+• Collector
 
-Flow Builder	->	Speaker
-Operator	->	Translator
-Collector	->	Listener
+Let's understand this with the following analogy. <br>
+
+Flow Builder	->	Speaker <br>
+Operator	->	Translator <br>
+Collector	->	Listener <br>
 
 <b>Flow Builder</b> <br>
 In simple words, we can say that it helps in doing a task and emitting items. Sometimes it is just required to emit the items without doing any task, for example, just emit a few numbers (1, 2, 3). Here, the flow builder helps us in doing so. We can think of this as a Speaker. The Speaker will think(do a task) and speak(emit items).
@@ -803,16 +804,16 @@ flow {
 ```
 
 
-flow { }	->	Flow Builder
-map { }	    ->	Operator
-collect {}	->	Collector
+flow { }	->	Flow Builder <br>
+map { }	    ->	Operator <br>
+collect {}	->	Collector <br>
 
-Let's go through the code.
+Let's go through the code. <br>
 
-First, we have a flow builder which is emitting 0 to 10.
-Then, we have a map operator which will take each and every value and square(it * it). The map is Intermediate Operator.
-Then, we have a collector in which we get the emitted values and print them as 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100.
-Note: When we actually connect both the Flow Builder and the Collector using the collect method, then only, it will start executing.
+First, we have a flow builder which is emitting 0 to 10. <br>
+Then, we have a map operator which will take each and every value and square(it * it). The map is Intermediate Operator. <br>
+Then, we have a collector in which we get the emitted values and print them as 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100. <br>
+Note: When we actually connect both the Flow Builder and the Collector using the collect method, then only, it will start executing. <br>
 
 Now it's time to learn more about the Flow Builder. <br>
 
