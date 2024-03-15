@@ -800,9 +800,11 @@ flow {
 }
 ```
 
+```
 flow { }	->	Flow Builder
 map { }	->	Operator
 collect {}	->	Collector
+```
 
 Let's go through the code.
 
@@ -811,15 +813,23 @@ Then, we have a map operator which will take each and every value and square(it 
 Then, we have a collector in which we get the emitted values and print them as 0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100.
 Note: When we actually connect both the Flow Builder and the Collector using the collect method, then only, it will start executing.
 
-Now it's time to learn more about the Flow Builder.
+Now it's time to learn more about the Flow Builder. <br>
 
-Types of flow builders
-There are 4 types of flow builders:
+Types of flow builders <br>
+There are 4 types of flow builders: <br>
 
-flowOf(): It is used to create flow from a given set of items.
-asFlow(): It is an extension function that helps to convert type into flows.
-flow{}: This is what we have used in the Hello World example of Flow.
-channelFlow{}: This builder creates flow with the elements using send provided by the builder itself.
+<b>flowOf(): </b> <br>
+It is used to create flow from a given set of items. <br>
+
+<b>asFlow(): </b> <br>
+It is an extension function that helps to convert type into flows. <br>
+
+<b>flow{}: </b>  <br>
+This is what we have used in the Hello World example of Flow. <br>
+
+<b>channelFlow{}: </b> <br>
+This builder creates flow with the elements using send provided by the builder itself. <br>
+
 Examples:
 
 flowOf()
