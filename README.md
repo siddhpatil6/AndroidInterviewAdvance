@@ -762,18 +762,18 @@ In simple words, we can say that it helps in doing a task and emitting items. So
 <b>Operator</b> <br>
 The operator helps in transforming the data from one format to another.
 
-We can think of the operator as a Translator. Assume that the Speaker is speaking in French and the Collector(Listener) understands English only. So, there has to be a translator to translate French into English. That translator is an Operator.
+We can think of the operator as a Translator. Assume that the Speaker is speaking in French and the Collector(Listener) understands English only. So, there has to be a translator to translate French into English. That translator is an Operator. <br>
 
-Operators are more than this actually, using the operator, we can also provide the thread on which the task will be done. We will see this later.
+Operators are more than this actually, using the operator, we can also provide the thread on which the task will be done. We will see this later. <br>
 
 <b>Collector</b> <br>
-The collector collects the items emitted using the Flow Builder which are transformed by the operators.
+The collector collects the items emitted using the Flow Builder which are transformed by the operators. <br>
 
-We can think of a collector as a Listener. Actually, Collector also comes under the operator which is known as Terminal Operator. The collector is a Terminal Operator. For now, we will skip the Terminal Operator as that is not needed for this blog on Flow API.
+We can think of a collector as a Listener. Actually, Collector also comes under the operator which is known as Terminal Operator. The collector is a Terminal Operator. For now, we will skip the Terminal Operator as that is not needed for this blog on Flow API. <br>
 
 <b>Flow API Source Code</b> <br>
-
-The Flow interfaces look like the below in the source code of Coroutines:
+ <br>
+The Flow interfaces look like the below in the source code of Coroutines: <br>
 
 ```
 public fun interface FlowCollector<in T> {
@@ -802,11 +802,10 @@ flow {
 }
 ```
 
-```
+
 flow { }	->	Flow Builder
 map { }	    ->	Operator
 collect {}	->	Collector
-```
 
 Let's go through the code.
 
