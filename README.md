@@ -714,4 +714,12 @@ This was about the lazy property in Kotlin.
 
 Now we must have understood the lateinit vs lazy properties in Kotlin
 
-<h1>What is Multidex in Android?</h1>
+<h1>coroutineScope vs supervisorScope</h1>
+
+• A coroutineScope will cancel whenever any of its children fail.
+• A supervisorScope won't cancel other children when one of them fails.
+
+If we want to continue with the other tasks even when one fails, we go with the supervisorScope.
+
+
+
