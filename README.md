@@ -716,10 +716,18 @@ Now we must have understood the lateinit vs lazy properties in Kotlin
 
 <h1>coroutineScope vs supervisorScope</h1>
 
-• A coroutineScope will cancel whenever any of its children fail.
-• A supervisorScope won't cancel other children when one of them fails.
+• A coroutineScope will cancel whenever any of its children fail. <br>
+• A supervisorScope won't cancel other children when one of them fails. <br>
 
-If we want to continue with the other tasks even when one fails, we go with the supervisorScope.
+If we want to continue with the other tasks even when one fails, we go with the supervisorScope. <br> <br>
 
+
+<h1> Things to know while using the init block in Kotlin: </h1>
+
+• The init block gets executed immediately after the primary constructor. <br>
+• The init block gets executed before the secondary constructor. <br>
+• Primary constructor parameters can be used in the initializer blocks. <br>
+• A class can have more than one init block, in this case, the initializer blocks are executed in the same order as they appear in the class body considering the properties if there are any in between. <br>
+• It does not take any parameters. <br>
 
 
