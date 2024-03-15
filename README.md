@@ -1143,20 +1143,21 @@ It can be accessed as below:
 ```
 val maxSlots = Mentor.Config.MAX_SLOTS
 ```
+
 When defined inside a class, we can't skip the name while accessing it.
 
 However, this is not the case with the companion object. Companion object allows us to skip the name and access without using the name.
 
 Let me tabulate the differences between both of them for your better understanding so that you can decide which one to use based on your use case.
 
-Companion object	
+<b>Companion object<b> <br>
 • It needs to be defined inside a class.	
 • The companion object is instantiated for the first time as soon as the containing class is loaded. 
 • It is equivalent to a static keyword in Java.	
 • Gets a default name as a Companion when we do not provide a name.
 • We can skip the name while calling a method or accessing a variable.
 
-Regular object -
+<b>Regular object -<b> <br>
 • It can be defined anywhere.
 • It means that it is instantiated even if we have not used the companion object.	The object is instantiated lazily when we access it for the first time.
 • Must be named by us.
