@@ -756,22 +756,22 @@ Flow Builder	->	Speaker
 Operator	->	Translator
 Collector	->	Listener
 
-<b>Flow Builder</b>
+<b>Flow Builder</b> <br>
 In simple words, we can say that it helps in doing a task and emitting items. Sometimes it is just required to emit the items without doing any task, for example, just emit a few numbers (1, 2, 3). Here, the flow builder helps us in doing so. We can think of this as a Speaker. The Speaker will think(do a task) and speak(emit items).
 
-<b>Operator</b>
+<b>Operator</b> <br>
 The operator helps in transforming the data from one format to another.
 
 We can think of the operator as a Translator. Assume that the Speaker is speaking in French and the Collector(Listener) understands English only. So, there has to be a translator to translate French into English. That translator is an Operator.
 
 Operators are more than this actually, using the operator, we can also provide the thread on which the task will be done. We will see this later.
 
-<b>Collector</b>
+<b>Collector</b> <br>
 The collector collects the items emitted using the Flow Builder which are transformed by the operators.
 
 We can think of a collector as a Listener. Actually, Collector also comes under the operator which is known as Terminal Operator. The collector is a Terminal Operator. For now, we will skip the Terminal Operator as that is not needed for this blog on Flow API.
 
-<b>Flow API Source Code</b>
+<b>Flow API Source Code</b> <br>
 
 The Flow interfaces look like the below in the source code of Coroutines:
 
@@ -787,7 +787,9 @@ public interface Flow<out T> {
 
 }
 ```
+
 Hello World of Flow
+
 ```
 flow {
     (0..10).forEach {
@@ -840,6 +842,7 @@ flowOf(4, 2, 5, 1, 7)
     Log.d(TAG, it.toString())
 }
 ```
+
 asFlow()
 
 ```
@@ -974,6 +977,4 @@ CoroutineScope(Dispatchers.Main).launch {
 This is how we can create our Flow.
 
 In Kotlin, Coroutine is just the scheduler part of RxJava but now with Flow API coming alongside it, it can be an alternative to RxJava in Android
-
-
 
