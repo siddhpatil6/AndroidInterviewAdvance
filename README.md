@@ -880,7 +880,7 @@ channelFlow {
 
 At the end of this article, we will also learn to create Flow using Flow Builder. Now we need to learn about the flowOn operator.
 
-<b>flowOn Operator</b>
+<b>flowOn Operator </b>
 
 flowOn Operator is very handy when it comes to controlling the thread on which the task will be done.
 
@@ -917,7 +917,8 @@ This is how the flowOn operator can be used to control the thread.
 
 flowOn() is like subscribeOn() in RxJava
 
-Dispatchers: They help in deciding the thread on which the work has to be done. There are majorly three types of Dispatchers which are IO, Default, and Main. IO dispatcher is used for network and disk-related tasks. Default is used for CPU-intensive work. The Main is the UI thread of Android.
+<b>Dispatchers: </b> <br>
+They help in deciding the thread on which the work has to be done. There are majorly three types of Dispatchers which are IO, Default, and Main. IO dispatcher is used for network and disk-related tasks. Default is used for CPU-intensive work. The Main is the UI thread of Android.
 
 Now, we will learn how to create our Flow using the Flow builder. We can create our Flow for any task using the Flow Builder.
 
