@@ -677,7 +677,7 @@ This was about the lateinit property in Kotlin.
 
 Now, it's time to learn about the lazy property in Kotlin.
 
-lazy
+<b>lazy</b>
 lazy in Kotlin is useful in a scenario when we want to create an object inside a class, but that object creation is expensive and that might lead to a delay in the creation of the object that is dependent on that expensive object.
 
 ```
@@ -686,13 +686,13 @@ class Session {
 }
 ```
 
-Suppose Mentor is an expensive object. And Session is the object that is dependent on the Mentor object.
-
-If Mentor object creation takes time, it will delay the creation of Session object.
-
-So, this is where the lazy keyword in Kotlin will help us.
-
-Let's update our code:
+Suppose Mentor is an expensive object. And Session is the object that is dependent on the Mentor object. <br>
+<br>
+If Mentor object creation takes time, it will delay the creation of Session object. <br>
+<br>
+So, this is where the lazy keyword in Kotlin will help us. <br>
+<br>
+Let's update our code: <br>
 
 ```
 class Session {
@@ -700,9 +700,10 @@ class Session {
 }
 ```
 
-Here, we have used the lazy keyword.
+Here, we have used the lazy keyword. <br>
 
-So, we need to understand that the object mentor will get initialized only when it is accessed for the first time, else it will not get initialized.
+So, we need to understand that the object mentor will get initialized only when it is accessed for the first time, else it will not get initialized. <br>
+
 
 It will lead to the fast creation of the Session object in the above example because the Mentor object will not get initialized unnecessarily during the object creation of Session. It will get initialized when it is accessed for the first time.
 
