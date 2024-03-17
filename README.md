@@ -11,12 +11,13 @@ Both launch and async are the functions in Kotlin to start the Coroutines.
 
 launch{}
 async{}
-The difference is that the launch{} returns a Job and does not carry any resulting value whereas the async{} returns an instance of Deferred<T>, which has an await() function that returns the result of the coroutine like we have future in Java in which we do future.get() to get the result.
+The difference is that the launch{} returns a Job and does not carry any resulting value whereas <br>
+the async{} returns an instance of Deferred<T>, which has an await() function that returns the result of the coroutine like we have future in Java in which we do future.get() to get the result.
 
 In other words:
 
-launch: fire and forget.
-async: perform a task and return a result.
+<b>launch:</b> fire and forget. <br>
+<b>async:</b> perform a task and return a result. <br>
 Let's take an example to learn launch vs async.
 
 We can use the launch as below:
@@ -43,26 +44,26 @@ val result = deferredJob.await() // result = 10
 
 Here, we get the result using the await().
 
-In async also, we can use the Deferred job object to get a job's status or to cancel it.
+In async also, we can use the Deferred job object to get a job's status or to cancel it. <br>
 
-Note: I have used GlobalScope for quick examples, we should avoid using it at all costs. In an Android project, we should use custom scopes based on our usecase such as lifecycleScope, viewModelScope and etc.
+Note: I have used GlobalScope for quick examples, we should avoid using it at all costs. In an Android project, we should use custom scopes based on our usecase such as lifecycleScope, viewModelScope and etc. <br>
 
-Another difference between launch and async is in terms of exception handling.
+Another difference between launch and async is in terms of exception handling. <br>
 
-If any exception comes inside the launch block, it crashes the application if we have not handled it.
+If any exception comes inside the launch block, it crashes the application if we have not handled it. <br>
 
-However, if any exception comes inside the async block, it is stored inside the resulting Deferred and is not delivered anywhere else, it will get silently dropped unless we handle it.
+However, if any exception comes inside the async block, it is stored inside the resulting Deferred and is not delivered anywhere else, it will get silently dropped unless we handle it. <br>
 
-Let's understand this difference with code examples.
+Let's understand this difference with code examples. <br>
 
-Suppose we have a function that does something and throws an exception:
+Suppose we have a function that does something and throws an exception: <br>
 
 ```
 private fun doSomethingAndThrowException() {
     throw Exception("Some Exception")
 }
 ```
-Now using it with the launch:
+Now using it with the launch: <br>
 
 ```
 GlobalScope.launch {
@@ -121,31 +122,31 @@ If any exception comes inside the async block, it is stored inside the resulting
 
 <h3>• How can two distinct Android apps interact? </h3>
 
-Intents: 
-Apps can communicate with each other using intents. An app can send an intent to request an action from another app, such as opening a specific activity or sharing data. The receiving app can then handle the intent and respond accordingly.
+Intents: <br>
+Apps can communicate with each other using intents. An app can send an intent to request an action from another app, such as opening a specific activity or sharing data. The receiving app can then handle the intent and respond accordingly. <br>
 
-Content Providers: 
-Content providers allow apps to share data with each other. An app can define a content provider to make its data accessible to other apps. Other apps can then query or modify this data using content resolver methods.
+Content Providers: <br>
+Content providers allow apps to share data with each other. An app can define a content provider to make its data accessible to other apps. Other apps can then query or modify this data using content resolver methods. <br>
 
-Broadcasts: 
-Apps can send broadcast messages to notify other apps of events or trigger actions. Apps can register to receive specific broadcasts using intent filters.
+Broadcasts:  <br>
+Apps can send broadcast messages to notify other apps of events or trigger actions. Apps can register to receive specific broadcasts using intent filters. <br>
 
-Bound Services: 
-Apps can bind to a service provided by another app to interact with it. This allows for more complex and ongoing interactions between apps.
+Bound Services:  <br>
+Apps can bind to a service provided by another app to interact with it. This allows for more complex and ongoing interactions between apps. <br>
 
-Shared Preferences: 
-Apps can use shared preferences to store and retrieve small amounts of data in key-value pairs. If two apps use the same shared preferences file, they can share data through this mechanism.
+Shared Preferences:  <br>
+Apps can use shared preferences to store and retrieve small amounts of data in key-value pairs. If two apps use the same shared preferences file, they can share data through this mechanism. <br>
 
-File Sharing: 
-Apps can share files with each other using file providers or by writing to a shared directory that both apps have access to.
+File Sharing:  <br>
+Apps can share files with each other using file providers or by writing to a shared directory that both apps have access to. <br>
 
-It's important to note that some of these methods require permissions and may have security implications. Apps should use these methods responsibly and follow best practices for inter-app communication.
+It's important to note that some of these methods require permissions and may have security implications. Apps should use these methods responsibly and follow best practices for inter-app communication. <br>
 
 <h3>• Is it possible to run an Android app in multiple processes? </h3>
 
-Yes, it is possible to run an Android app in multiple processes. This can be achieved by setting the android:process attribute in the <application> tag of the app's manifest file. By doing this, you can specify a different process name for components of your app, such as activities, services, or broadcast receivers, allowing them to run in separate processes.
+Yes, it is possible to run an Android app in multiple processes. This can be achieved by setting the android:process attribute in the <application> tag of the app's manifest file. By doing this, you can specify a different process name for components of your app, such as activities, services, or broadcast receivers, allowing them to run in separate processes. <br>
 
-However, it's important to note that running an app in multiple processes can have implications for performance and resource usage. Each additional process consumes memory and CPU resources, so it's generally recommended to use multiple processes only when necessary and to carefully consider the trade-offs involved.
+However, it's important to note that running an app in multiple processes can have implications for performance and resource usage. Each additional process consumes memory and CPU resources, so it's generally recommended to use multiple processes only when necessary and to carefully consider the trade-offs involved. <br>
 
 </h3>• What is AIDL? Enumerate the steps in creating a bounded service through AIDL.? </h3> <br>
 
