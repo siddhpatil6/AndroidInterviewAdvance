@@ -6,7 +6,7 @@ Over 50% of professional developers who use coroutines have reported seeing incr
 This topic describes how you can use Kotlin coroutines to address these problems,
 enabling you to write cleaner and more concise app code.
 
-<h1>What is difference between async and await ?</h1>
+<h1>What is difference between launch and async ?</h1>
 Both launch and async are the functions in Kotlin to start the Coroutines.
 
 launch{}
