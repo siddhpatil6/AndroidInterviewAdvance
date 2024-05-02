@@ -1255,7 +1255,7 @@ Let me tabulate the differences between both of them for your better understandi
 • Mainly used for providing Singleton behavior.
 
 <h1> what is difference in coroutine than thread </h1>
-<b>•Concurrency vs. Parallelism:</b> <br>
+<b>• Concurrency vs. Parallelism:</b> <br>
 <p>Threads are typically associated with parallelism, where multiple threads of execution run simultaneously on multiple CPU cores.<br>
 Coroutines are designed more for concurrency, where multiple tasks can be interleaved within a single thread of execution. Coroutines don't necessarily utilize multiple CPU cores simultaneously, but they can still achieve concurrency by suspending and resuming execution at specific points.<br></p>
 <b>• Resource Utilization:</b> <br>
