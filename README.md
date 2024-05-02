@@ -1255,19 +1255,19 @@ Let me tabulate the differences between both of them for your better understandi
 • Mainly used for providing Singleton behavior.
 
 <h1> what is difference in coroutine than thread </h1>
-<b>Concurrency vs. Parallelism:</b> <br>
-Threads are typically associated with parallelism, where multiple threads of execution run simultaneously on multiple CPU cores.<br>
-Coroutines are designed more for concurrency, where multiple tasks can be interleaved within a single thread of execution. Coroutines don't necessarily utilize multiple CPU cores simultaneously, but they can still achieve concurrency by suspending and resuming execution at specific points.<br>
-<b>Resource Utilization:</b> <br>
-Threads are heavier in terms of resource utilization because each thread requires its own stack and other resources. Creating and managing threads can lead to high overhead, especially when dealing with many concurrent tasks.
-Coroutines are lightweight in comparison because they don't necessarily correspond to operating system threads. They can be multiplexed onto a smaller number of threads or even a single thread, reducing resource overhead.<br>
-<b>Concurrency Model:</b> <br>
-Threads typically follow a preemptive concurrency model, where the operating system scheduler decides when to switch between threads. This can lead to issues like race conditions and deadlocks, which must be handled explicitly.<br>
-Coroutines, on the other hand, follow a cooperative concurrency model. They allow suspension and resumption of execution at specific points, which can be controlled by the programmer. This makes it easier to write asynchronous and non-blocking code, as coroutines can voluntarily yield control to other coroutines at defined suspension points.<br>
-<b>Synchronization and Communication:</b> <br>
-Threads often require explicit synchronization mechanisms, such as locks, mutexes, and semaphores, to coordinate access to shared resources and avoid data races.<br>
-Coroutines can communicate and synchronize using higher-level constructs like channels and message passing. This simplifies concurrency management by providing built-in mechanisms for inter-coroutine communication and synchronization.<br>
-<b>Error Handling:</b> <br>
-Threads typically rely on traditional error handling mechanisms, such as exceptions and return codes, which can sometimes be error-prone and difficult to manage.<br>
-Coroutines provide structured error handling, allowing exceptions to propagate across suspend points naturally. This makes error handling more straightforward and less error-prone.<br>
+<b>•Concurrency vs. Parallelism:</b> <br>
+<p>Threads are typically associated with parallelism, where multiple threads of execution run simultaneously on multiple CPU cores.<br>
+Coroutines are designed more for concurrency, where multiple tasks can be interleaved within a single thread of execution. Coroutines don't necessarily utilize multiple CPU cores simultaneously, but they can still achieve concurrency by suspending and resuming execution at specific points.<br></p>
+<b>• Resource Utilization:</b> <br>
+<p>Threads are heavier in terms of resource utilization because each thread requires its own stack and other resources. Creating and managing threads can lead to high overhead, especially when dealing with many concurrent tasks.
+Coroutines are lightweight in comparison because they don't necessarily correspond to operating system threads. They can be multiplexed onto a smaller number of threads or even a single thread, reducing resource overhead.<br></p>
+<b>• Concurrency Model:</b> <br>
+<p>Threads typically follow a preemptive concurrency model, where the operating system scheduler decides when to switch between threads. This can lead to issues like race conditions and deadlocks, which must be handled explicitly.<br>
+Coroutines, on the other hand, follow a cooperative concurrency model. They allow suspension and resumption of execution at specific points, which can be controlled by the programmer. This makes it easier to write asynchronous and non-blocking code, as coroutines can voluntarily yield control to other coroutines at defined suspension points.<br></p>
+<b>• Synchronization and Communication:</b> <br>
+<p>Threads often require explicit synchronization mechanisms, such as locks, mutexes, and semaphores, to coordinate access to shared resources and avoid data races.<br>
+Coroutines can communicate and synchronize using higher-level constructs like channels and message passing. This simplifies concurrency management by providing built-in mechanisms for inter-coroutine communication and synchronization.</p><br>
+<b>• Error Handling:</b> <br>
+<p>Threads typically rely on traditional error handling mechanisms, such as exceptions and return codes, which can sometimes be error-prone and difficult to manage.<br>
+Coroutines provide structured error handling, allowing exceptions to propagate across suspend points naturally. This makes error handling more straightforward and less error-prone.<br></p>
 
