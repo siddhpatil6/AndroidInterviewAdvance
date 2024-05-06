@@ -1455,3 +1455,77 @@ sealed class Result {
 ```
 
 In summary, enums are used for defining a fixed set of values, while sealed classes are used for defining restricted class hierarchies.
+
+<h1>Object vs Companion Object </h1>
+
+Object <br>
+Object in kotlin is a way of implementing Singletons. We all have come across the need of Singleton pattern in our career for various use-cases. Well, in kotlin this has been made very straight forward.
+e.g.
+
+```
+object MyObject {
+  
+  // further implementation
+  
+  fun printHello() {
+    println("Hello World!")
+  }
+  
+}
+```
+
+This implementation is also called object declaration. Object declarations are thread-safe and are lazy initialized, i.e. objects are initialized when they are accessed for the first time.
+
+Companion Object
+If we want some implementation to be a class but still want to expose some behavior as static behavior, companion object come to the play. These are object declarations inside a class. These companion objects are initialized when the containing class is resolved, similar to static methods and variables in java world.
+e.g.
+
+```
+class MyClass {
+
+  // some implementations
+  
+  companion object {
+    val SOME_STATIC_VARIABLE = "some_static_variable"
+    fun someStaticFunction() {
+      // static function implementation
+    }
+  }
+}
+```
+
+Summary <br>
+Given the above explanation, the use-case completely depends on the problem we are trying to solve. If we need to provide the Singleton behavior, then we are better off with Objects, else if we just want to add some static essence to our classes, we can use Companion objects.
+
+Bonus — Accessing Objects & Companions from Java <br>
+@JvmField, lateinit, const, @JvmStatic are handy when it comes to accessing field properties or functions defined in objects or companion objects.
+e.g. our object can be something like below
+
+```
+object MyObject {
+
+  @JvmStatic
+  fun printStaticHello() {
+    println("Static Hello World!")
+  }
+
+  fun printNonStaticHello() {
+    println("Non-Static Hello World!")
+  }
+}
+```
+
+From Java world, we can access those functions as: <br>
+```
+MyObject.printStaticHello() OR MyObject.INSTANCE.printNonStaticHello() - this uses the singleton instance 
+Accessing companion object
+```
+
+MyObject.printStaticHello() OR MyObject.INSTANCE.printNonStaticHello() - this uses the singleton instance
+
+From Java world, we can access those as:
+
+```
+MyClass.printStaticHello() 
+MyClass.Companion.printStaticHello() MyClass.Companion.printNonStaticHello()
+```
