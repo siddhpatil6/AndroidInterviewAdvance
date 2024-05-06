@@ -120,7 +120,7 @@ async{} returns an instance of Deferred<T>, which has an await() function that r
 If any exception comes inside the async block, it is stored inside the resulting Deferred and is not delivered anywhere else, it will get silently dropped unless we handle it.<br>
 
 
-<h3>• How can two distinct Android apps interact? </h3>
+<h1>• How can two distinct Android apps interact? </h1>
 
 Intents: <br>
 Apps can communicate with each other using intents. An app can send an intent to request an action from another app, such as opening a specific activity or sharing data. The receiving app can then handle the intent and respond accordingly. <br>
@@ -148,7 +148,7 @@ Yes, it is possible to run an Android app in multiple processes. This can be ach
 
 However, it's important to note that running an app in multiple processes can have implications for performance and resource usage. Each additional process consumes memory and CPU resources, so it's generally recommended to use multiple processes only when necessary and to carefully consider the trade-offs involved. <br>
 
-</h3>• What is AIDL? Enumerate the steps in creating a bounded service through AIDL.? </h3> <br>
+<h1>• What is AIDL? Enumerate the steps in creating a bounded service through AIDL.? </h1> <br>
 
 AIDL (Android Interface Definition Language) is a language specifically developed by Google for defining the interface requirements between a client and server in Android's inter-process communication (IPC). It allows you to define the programming interface that both the client and server agree upon in order to communicate with each other.
 
