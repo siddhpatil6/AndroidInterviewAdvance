@@ -1425,3 +1425,33 @@ fun getName(): String {
     return "Siddhant"
 }
 ```
+
+<h1> Enum Class Vs Sealed Class ? </h1>
+enum class and a sealed class are both used to represent restricted hierarchies. However, they have different use cases and behaviors. <br>
+<br>
+Enum Class : <br>
+An enum class in Kotlin is used to define a type that represents a finite set of distinct values, such as days of the week, directions, etc. <br>
+Each enum constant is an object and can have properties, methods, and implement interfaces.<br>
+Enum classes can be used in when expressions for exhaustive checking.<br>
+Example:<br>
+<br>
+```
+enum class Direction {
+    NORTH, SOUTH, EAST, WEST
+}
+```
+
+Sealed Class : <br>
+A sealed class is used to represent a restricted hierarchy where all subclasses must be nested inside the sealed class declaration. <br>
+Sealed classes are often used in combination with when expressions to achieve exhaustive checking. <br>
+Sealed classes can have subclasses with additional properties, and each subclass can have its own implementation of methods. <br>
+Example:<br>
+<br>
+```
+sealed class Result {
+    data class Success(val data: String) : Result()
+    data class Error(val message: String) : Result()
+}
+```
+
+In summary, enums are used for defining a fixed set of values, while sealed classes are used for defining restricted class hierarchies.
