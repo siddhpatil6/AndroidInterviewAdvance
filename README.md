@@ -1496,36 +1496,3 @@ class MyClass {
 
 Summary <br>
 Given the above explanation, the use-case completely depends on the problem we are trying to solve. If we need to provide the Singleton behavior, then we are better off with Objects, else if we just want to add some static essence to our classes, we can use Companion objects.
-
-Bonus — Accessing Objects & Companions from Java <br>
-@JvmField, lateinit, const, @JvmStatic are handy when it comes to accessing field properties or functions defined in objects or companion objects.
-e.g. our object can be something like below
-
-```
-object MyObject {
-
-  @JvmStatic
-  fun printStaticHello() {
-    println("Static Hello World!")
-  }
-
-  fun printNonStaticHello() {
-    println("Non-Static Hello World!")
-  }
-}
-```
-
-From Java world, we can access those functions as: <br>
-```
-MyObject.printStaticHello() OR MyObject.INSTANCE.printNonStaticHello() - this uses the singleton instance 
-Accessing companion object
-```
-
-MyObject.printStaticHello() OR MyObject.INSTANCE.printNonStaticHello() - this uses the singleton instance
-
-From Java world, we can access those as:
-
-```
-MyClass.printStaticHello() 
-MyClass.Companion.printStaticHello() MyClass.Companion.printNonStaticHello()
-```
