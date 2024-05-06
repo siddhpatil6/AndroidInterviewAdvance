@@ -1564,4 +1564,14 @@ The main advantages of viewbinding are speed and efficiency. It has a shorter bu
 
 In short, there is nothing viewbinding can do that databinding cannot do (though at cost of longer build times) and there are a lot databinding can do that viewbinding can"t  <br>
 
+<h1>is there any other way than recreating activity than rotation of app ?</h1>
+is there any other way to recreate activity other than roatatiin <br>
+
+Yes, there are several ways an activity can be recreated other than rotation. Here are a few examples:<br>
+
+Configuration Changes: Apart from rotation, changes like language, font size, or night mode can trigger a configuration change, leading to the recreation of the activity. <br>
+Multi-Window Mode: If your app supports multi-window mode and the user changes the app's size or enters/exits multi-window mode, the activity may be recreated to adapt to the new configuration. <br>
+Theme Changes: If your app allows users to change themes dynamically, switching between themes can cause the activity to be recreated to apply the new theme. <br>
+Locale Changes: Changing the device's locale can also recreate the activity if your app supports multiple languages and you haven't handled locale changes properly. <br>
+Low Memory: As mentioned earlier, if the system is low on memory, it may destroy and recreate activities to free up resources. <br>
 
