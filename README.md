@@ -1532,7 +1532,7 @@ As we saw in the example above, our value was only initialized once when we trie
 
 <h3>What are the differences between Lateinit and Lazy?</h3> <br>
 1- The modifier “lateinit” is restricted to mutable(var) variable properties, whereas the modifier “lazy” is exclusively used with read-only(val) properties. <br>
-
+<br>
 2- A property marked with “lateinit” can be assigned a value multiple times as needed during runtime, whereas a property initialized with “lazy” can only be assigned a value once upon its first use. <br>
 
 3- It is not possible to declare a primitive data type as a “lateinit” property, whereas a “lazy” property can be of either primitive or non-primitive data types. (Such as Int) <br>
