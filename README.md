@@ -1397,3 +1397,31 @@ val result = "Hello".customScope {
 This will print "Value is Hello" and assign "Hello" to result.<br>
 
 Keep in mind that while writing custom scope functions can be useful in specific situations, it's generally recommended to use the standard scope functions provided by Kotlin (let, run, with, apply, and also) as they are well-known and understood by other Kotlin developers.<br>
+
+
+<h1>calling method in costant is it allowed? </h1>
+
+```
+const val name = getName()
+
+fun main() {
+
+}
+
+fun getName() :String{
+    return "Siddhant"
+}
+```
+
+This code defines a constant name with the value returned by the getName() function, which is "Siddhant". However, this code won't compile because the getName() function is called during the initialization of name, but functions cannot be called at the top level of a Kotlin file. Functions need to be called from within another function or a code block. Here's a modified version of the code that will compile:
+
+```
+fun main() {
+    val name = getName()
+    println(name)
+}
+
+fun getName(): String {
+    return "Siddhant"
+}
+```
