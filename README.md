@@ -1375,3 +1375,25 @@ to call specific interface method -
 ```
 (vehicle as Truck).drive() // Output: "Vehicle is driving"
 ```
+
+<h1>how to write custom extensions ?</h1>
+Each function has a different use case and scoping behavior. Here's an example of how you might implement a custom scope function called customScope: <br>
+
+```
+fun <T> T.customScope(block: T.() -> Unit): T {
+    block()
+    return this
+}
+```
+In this example, customScope is an extension function on any type T. It takes a lambda block as an argument, which is an extension function on T and has a receiver of T. Inside customScope, it calls block() on the instance and then returns the instance itself.<br>
+
+You can use customScope like this:<br>
+
+```
+val result = "Hello".customScope {
+    println("Value is $this")
+}
+```
+This will print "Value is Hello" and assign "Hello" to result.<br>
+
+Keep in mind that while writing custom scope functions can be useful in specific situations, it's generally recommended to use the standard scope functions provided by Kotlin (let, run, with, apply, and also) as they are well-known and understood by other Kotlin developers.<br>
