@@ -1427,14 +1427,14 @@ fun getName(): String {
 ```
 
 <h1> Enum Class Vs Sealed Class ? </h1>
-enum class and a sealed class are both used to represent restricted hierarchies. However, they have different use cases and behaviors. <br>
+enum class and a sealed class are both used to represent restricted hierarchies. However, they have different use cases and behaviors.<br>
 <br>
-Enum Class : <br>
+Enum Class :  <br>
 An enum class in Kotlin is used to define a type that represents a finite set of distinct values, such as days of the week, directions, etc. <br>
 Each enum constant is an object and can have properties, methods, and implement interfaces.<br>
 Enum classes can be used in when expressions for exhaustive checking.<br>
+
 Example:<br>
-<br>
 ```
 enum class Direction {
     NORTH, SOUTH, EAST, WEST
