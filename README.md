@@ -1399,7 +1399,7 @@ This will print "Value is Hello" and assign "Hello" to result.<br>
 Keep in mind that while writing custom scope functions can be useful in specific situations, it's generally recommended to use the standard scope functions provided by Kotlin (let, run, with, apply, and also) as they are well-known and understood by other Kotlin developers.<br>
 
 
-<h1>calling method in costant is it allowed? </h1>
+<h1>calling method in cost is it allowed? </h1>
 
 ```
 const val name = getName()
