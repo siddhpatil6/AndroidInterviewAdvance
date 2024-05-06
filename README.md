@@ -1544,3 +1544,24 @@ As we saw in the example above, our value was only initialized once when we trie
 6- While a “lateinit” property cannot have a customized getter, a “lazy” property contains a block of code that runs the first time the property is called. <br>
 
 7- Attempting to access a “lateinit” property before it has been initialized results in a distinct exception that specifies the uninitialized property. On the other hand, a “lazy” property cannot be accessed before its initialization. It is important to note that a “lazy” property can be null, yet it will still be initialized the first time the property is accesse <br>
+
+<h1> ViewBinding vs DataBinding - </h1>
+
+ViewBinding - <br>
+Only binding views to code.  <br>
+
+DataBinding - <br>
+Binding data (from code) to views + ViewBinding (Binding views to code) <br>
+ <br>
+
+There are three important differences <br>
+
+With view binding, the layouts do not need a layout tag <br>
+
+You can't use viewbinding to bind layouts with data in xml (No binding expressions, no BindingAdapters nor two-way binding with viewbinding) <br>
+
+The main advantages of viewbinding are speed and efficiency. It has a shorter build time because it avoids the overhead and performance issues associated with databinding due to annotation processors affecting databinding's build time. <br>
+
+In short, there is nothing viewbinding can do that databinding cannot do (though at cost of longer build times) and there are a lot databinding can do that viewbinding can"t  <br>
+
+
