@@ -1351,4 +1351,27 @@ fun main() {
 }
 ```
 
+<h1>if class extending interface having same method name and parameter which interface method will get called ? and if we want to call specific interface than how to call it ?</h1>
 
+```
+interface Car {
+    fun drive()
+}
+
+interface Truck {
+    fun drive()
+}
+
+class Vehicle : Car,Truck {
+    
+     override fun drive() { // method of first interface will get called. i.e. - Car
+        println("Vehicle is driving")
+    }
+}
+```
+
+to call specific interface method -
+
+```
+(vehicle as Truck).drive() // Output: "Vehicle is driving"
+```
