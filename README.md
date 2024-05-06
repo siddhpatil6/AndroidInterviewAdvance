@@ -1337,8 +1337,18 @@ The main differences between coroutines and traditional concurrency mechanisms l
 In summary, coroutines provide a more efficient, scalable, and easier-to-use concurrency model compared to traditional threading mechanisms. They are particularly well-suited for asynchronous programming in modern applications.
 
 
+<h1> Write higher order function </h1>
+
+```
+fun addOperation(a:Int,b:Int,func:(Int,Int)->Int):Int{
+    return func(a,b)
+}
 
 
-
+fun main() {
+    var result = addOperation(10,5) {a,b -> a+b}
+    println(result)
+}
+```
 
 
