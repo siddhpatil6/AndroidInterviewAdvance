@@ -1496,3 +1496,51 @@ class MyClass {
 
 Summary <br>
 Given the above explanation, the use-case completely depends on the problem we are trying to solve. If we need to provide the Singleton behavior, then we are better off with Objects, else if we just want to add some static essence to our classes, we can use Companion objects.
+
+<h1> What is lateinit vs lazy ? </h1>
+
+<h2>What is the Lateinit? </h2>
+We may not want to initialize our values at declaration time, but instead want to initialize and use them at any later time in our application. However, before using our value, we must not forget that our value must be initialized before it can be used. Let’s make an example for better understanding! <br>
+<br>
+
+A basic lateinit usage example.<br>
+<br>
+The output of the above example on LogCat.<br>
+As we saw in the example above, we did not initialize our value at declaration time. Instead, we initialize our application’s OnCreate() method and print our value to LogCat with the print() method. But what if we tried to print our value to LogCat without initializing it? Let’s try and see!<br>
+<br>
+
+Let’s comment out where we initialize our value at any time in our application and examine our output.<br>
+The error that we got because we tried to reach our value without initializing it.<br>
+As seen above, if we try to access our value without initializing it, we will encounter a “UninitializedPropertyAccessException” exception. To avoid this error, we can also use the isInitialized() method that Kotlin provides for us.<br>
+
+Basic use case of isInitialized.<br>
+As you can see, you can use isInitialized to check if my value is initialized if you need it.<br>
+
+
+What is the by Lazy?<br>
+Lazy initialization is a design pattern that we often come across in the software world. With lazy initialization, we can create objects only the first time that we access them, otherwise we don’t have to initialize them. It ensures that objects that are expensive to create are initialized only where they are to be used, not on the app startup.<br>
+
+lazy in Kotlin is useful in a scenario when we want to create an object inside a class, but that object creation is expensive and that might lead to a delay in the creation of the object that is dependent on that expensive object. So, we need to understand that the object will get initialized only when it is accessed for the first time, else it will not get initialized.<br>
+
+Let’s make an example for better understanding!<br>
+
+
+Simple use of lazy initialize.<br>
+
+The output of our example above in LogCat. <br>
+As we saw in the example above, our value was only initialized once when we tried to access our object, and then we used this initialized object on each click. <br>
+
+<h2>What are the differences between Lateinit and Lazy? <br>
+1- The modifier “lateinit” is restricted to mutable(var) variable properties, whereas the modifier “lazy” is exclusively used with read-only(val) properties. <br>
+
+2- A property marked with “lateinit” can be assigned a value multiple times as needed during runtime, whereas a property initialized with “lazy” can only be assigned a value once upon its first use. <br>
+
+3- It is not possible to declare a primitive data type as a “lateinit” property, whereas a “lazy” property can be of either primitive or non-primitive data types. (Such as Int) <br>
+
+4- While it is not possible to ensure thread safety for a “lateinit” property, for a “lazy” property we have the option to choose from synchronization options such as SYNCHRONIZED, PUBLICATION, or NONE. (That’s why we use lazy when using the Singleton design pattern.) <br>
+
+5- Unlike a “lateinit” property, which cannot be declared as nullable, a “lazy” property can be defined as either nullable or non-nullable. <br>
+
+6- While a “lateinit” property cannot have a customized getter, a “lazy” property contains a block of code that runs the first time the property is called. <br>
+
+7- Attempting to access a “lateinit” property before it has been initialized results in a distinct exception that specifies the uninitialized property. On the other hand, a “lazy” property cannot be accessed before its initialization. It is important to note that a “lazy” property can be null, yet it will still be initialized the first time the property is accesse <br>
