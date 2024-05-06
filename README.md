@@ -1499,7 +1499,7 @@ Given the above explanation, the use-case completely depends on the problem we a
 
 <h1> What is lateinit vs lazy ? </h1>
 
-<h2>What is the Lateinit? </h2>
+<h3>What is the Lateinit? </h3>
 We may not want to initialize our values at declaration time, but instead want to initialize and use them at any later time in our application. However, before using our value, we must not forget that our value must be initialized before it can be used. Let’s make an example for better understanding! <br>
 <br>
 
@@ -1517,7 +1517,7 @@ Basic use case of isInitialized.<br>
 As you can see, you can use isInitialized to check if my value is initialized if you need it.<br>
 
 
-What is the by Lazy?<br>
+<h3>What is the by Lazy? </h3> <br>
 Lazy initialization is a design pattern that we often come across in the software world. With lazy initialization, we can create objects only the first time that we access them, otherwise we don’t have to initialize them. It ensures that objects that are expensive to create are initialized only where they are to be used, not on the app startup.<br>
 
 lazy in Kotlin is useful in a scenario when we want to create an object inside a class, but that object creation is expensive and that might lead to a delay in the creation of the object that is dependent on that expensive object. So, we need to understand that the object will get initialized only when it is accessed for the first time, else it will not get initialized.<br>
@@ -1530,7 +1530,7 @@ Simple use of lazy initialize.<br>
 The output of our example above in LogCat. <br>
 As we saw in the example above, our value was only initialized once when we tried to access our object, and then we used this initialized object on each click. <br>
 
-<h2>What are the differences between Lateinit and Lazy? <br>
+<h3>What are the differences between Lateinit and Lazy?</h3> <br>
 1- The modifier “lateinit” is restricted to mutable(var) variable properties, whereas the modifier “lazy” is exclusively used with read-only(val) properties. <br>
 
 2- A property marked with “lateinit” can be assigned a value multiple times as needed during runtime, whereas a property initialized with “lazy” can only be assigned a value once upon its first use. <br>
