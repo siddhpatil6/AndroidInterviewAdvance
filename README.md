@@ -823,7 +823,22 @@ If we want to continue with the other tasks even when one fails, we go with the 
 
 <h1>withContext in Kotlin Coroutines: </h1>
 It does not launch a coroutine and it is just a "suspend function" used for shifting the context of the existing coroutine.<br>
+It is typically used to switch to a different coroutine context, such as switching from a background thread to the main UI thread or vice versa. withContext is used to perform a block of code in a different context and then return to the original context. Here's a basic example:
 
+```
+suspend fun fetchData(): String {
+    return withContext(Dispatchers.IO) {
+        // Perform some network operation or heavy computation
+        "Data fetched from network"
+    }
+}
+
+// In a coroutine scope
+launch {
+    val data = fetchData() // This will switch to the IO dispatcher, fetch data, and then switch back
+    // Use the fetched data
+}
+```
 <h1> What is flow explain? </h1>
 Flow is an asynchronous data stream(which generally comes from a task) that emits values to the collector and gets completed with or without an exception.
 
