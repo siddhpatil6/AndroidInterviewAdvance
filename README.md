@@ -119,6 +119,141 @@ Perform a task and return a result.<br>
 async{} returns an instance of Deferred<T>, which has an await() function that returns the result of the coroutine.<br>
 If any exception comes inside the async block, it is stored inside the resulting Deferred and is not delivered anywhere else, it will get silently dropped unless we handle it.<br>
 
+<h1>Scopes in Kotlin Coroutines ? </h1> 
+<h3>Global Scope : </h3>
+Global Scope is one of the ways by which coroutines are launched. When Coroutines are launched within the global scope, they live long as the application does. If the coroutines finish it’s a job, it will be destroyed and will not keep alive until the application dies, but let’s imagine a situation when the coroutines has some work or instruction left to do, and suddenly we end the application, then the coroutines will also die, as the maximum lifetime of the coroutine is equal to the lifetime of the application. Coroutines launched in the global scope will be launched in a separate thread. Below is the example which shows that the in global scope coroutines are launched in a separate thread.
+
+```
+import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
+class MainActivity : AppCompatActivity() {
+	val TAG = "Main Activity"
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setContentView(R.layout.activity_main)
+		GlobalScope.launch {
+			Log.d(TAG, Thread.currentThread().name.toString())
+		}
+		Log.d("Outside Global Scope", Thread.currentThread().name.toString())
+	}
+}
+
+```
+
+<h3>LifeCycle Scope :</h3>
+The lifecycle scope is the same as the global scope, but the only difference is that when we use the lifecycle scope, all the coroutines launched within the activity also dies when the activity dies. It is beneficial as our coroutines will not keep running even after our activity dies. In order to implement the lifecycle scope within our project just launch the coroutine in lifecycle scope instead of global scope, ie just change the global scope to lifecycle scope in the main activity within which the infinite loop is running. All the code will remain the same except for some changes in the code of the main activity as mentioned above.
+
+```
+// program to show how lifecycle scope works
+
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
+const val TAG = "Main Activity"
+
+class MainActivity : AppCompatActivity() {
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setContentView(R.layout.activity_main)
+
+		btnStartActivity.setOnClickListener {
+			// launching the coroutine in the lifecycle scope
+			lifecycleScope.launch {
+				while (true) {
+					delay(1000L)
+					Log.d(TAG, "Still Running..")
+				}
+			}
+
+			GlobalScope.launch {
+				delay(5000L)
+				val intent = Intent(this@MainActivity, SecondActivity::class.java)
+				startActivity(intent)
+				finish()
+			}
+		}
+	}
+}
+
+```
+<h3> ViewModel Scope </h3>
+It is also the same as the lifecycle scope, only difference is that the coroutine in this scope will live as long the view model is alive. ViewModel is a class that manages and stores the UI-related data by following the principles of the lifecycle system in android
+
+<h1>Dispatchers in Kotlin Coroutines </h1>
+It is known that coroutines are always started in a specific context, and that context describes in which threads the coroutine will be started in. In general, we can start the coroutine using GlobalScope without passing any parameters to it, this is done when we are not specifying the thread in which the coroutine should be launch. This method does not give us much control over it, as our coroutine can be launched in any thread available, due to which it is not possible to predict the thread in which our coroutines have been launched.
+
+```
+class MainActivity : AppCompatActivity() { 
+	override fun onCreate(savedInstanceState: Bundle?) { 
+		super.onCreate(savedInstanceState) 
+		setContentView(R.layout.activity_main) 
+
+		// coroutine launched in GlobalScope 
+		GlobalScope.launch() { 
+		Log.i("Inside Global Scope ",Thread.currentThread().name.toString()) 
+			// getting the name of thread in 
+			// which our coroutine has been launched 
+		} 
+
+		Log.i("Main Activity ",Thread.currentThread().name.toString()) 
+	} 
+}
+```
+We can see that the thread in which the coroutine is launched cannot be predicted, sometimes it is DefaultDispatcher-worker-1, or DefaultDispatcher-worker-2 or DefaultDispatcher-worker-3.
+
+<h3>How Dispatchers solve the above problem? </h3>
+Dispatchers help coroutines in deciding the thread on which the work has to be done. Dispatchers are passed as the arguments to the GlobalScope by mentioning which type of dispatchers we can use depending on the work that we want the coroutine to do. 
+
+<h3>Types of Dispatchers</h3>
+There are majorly 4 types of Dispatchers.<br>
+
+<h5>Main  Dispatcher</h5>
+<h5>IO Dispatcher</h5>
+<h5>Default Dispatcher</h5>
+<h5>Unconfined Dispatcher</h5>
+
+<h3>Main Dispatcher: </h3>
+It starts the coroutine in the main thread. It is mostly used when we need to perform the UI operations within the coroutine, as UI can only be changed from the main thread(also called the UI thread).
+
+<h3>IO Dispatcher:</h3>
+It starts the coroutine in the IO thread, it is used to perform all the data operations such as networking, reading, or writing from the database, reading, or writing to the files eg: Fetching data from the database is an IO operation, which is done on the IO thread
+
+```
+GlobalScope.launch(Dispatchers.IO) { 
+	Log.i("Inside IO dispatcher ",Thread.currentThread().name.toString()) 
+		// getting the name of thread in which 
+			// our coroutine has been launched 
+	} 
+	Log.i("Main Activity ",Thread.currentThread().name.toString())
+```
+
+<h3> Default Dispatcher: </h3>
+
+It starts the coroutine in the Default Thread. We should choose this when we are planning to do Complex and long-running calculations, which can block the main thread and freeze the UI eg: Suppose we need to do the 10,000 calculations and we are doing all these calculations on the UI thread ie main thread, and if we wait for the result or 10,000 calculations, till that time our main thread would be blocked, and our UI will be frozen, leading to poor user experience. So in this case we need to use the Default Thread. The default dispatcher that is used when coroutines are launched in GlobalScope is represented by Dispatchers. Default and uses a shared background pool of threads, so launch(Dispatchers.Default) { … } uses the same dispatcher as GlobalScope.launch { … }.
+
+```
+GlobalScope.launch(Dispatchers.Default) { 
+		Log.i("Inside Default dispatcher ",Thread.currentThread().name.toString()) 
+			// getting the name of thread in which 
+			// our coroutine has been launched 
+		} 
+		Log.i("Main Activity ",Thread.currentThread().name.toString())
+```
+
+<h3>Unconfined Dispatcher: </h3>
+
+As the name suggests unconfined dispatcher is not confined to any specific thread. It executes the initial continuation of a coroutine in the current call-frame and lets the coroutine resume in whatever thread that is used by the corresponding suspending function, without mandating any specific threading policy. 
 
 <h1>• How can two distinct Android apps interact? </h1>
 
