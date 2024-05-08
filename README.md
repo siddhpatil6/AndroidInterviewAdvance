@@ -1503,19 +1503,60 @@ Given the above explanation, the use-case completely depends on the problem we a
 We may not want to initialize our values at declaration time, but instead want to initialize and use them at any later time in our application. However, before using our value, we must not forget that our value must be initialized before it can be used. Let’s make an example for better understanding! <br>
 <br>
 
+```
+class MainActivity : AppCompatActivity() {
+
+    //Here is the value we don't want to initialize at declaration time,
+    // so we used the lateinit keyword.
+    private lateinit var myUser:User
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        //We can initialize our value at any time in our application.
+        myUser = User("Hüseyin","Özkoç")
+        println("MY NAME IS : " + myUser.name)
+    }
+}
+
+data class User(var name: String, var surname: String)
+```
+
 A basic lateinit usage example.<br>
 <br>
-The output of the above example on LogCat.<br>
 As we saw in the example above, we did not initialize our value at declaration time. Instead, we initialize our application’s OnCreate() method and print our value to LogCat with the print() method. But what if we tried to print our value to LogCat without initializing it? Let’s try and see!<br>
 <br>
 
-Let’s comment out where we initialize our value at any time in our application and examine our output.<br>
-The error that we got because we tried to reach our value without initializing it.<br>
-As seen above, if we try to access our value without initializing it, we will encounter a “UninitializedPropertyAccessException” exception. To avoid this error, we can also use the isInitialized() method that Kotlin provides for us.<br>
+if we try to access our value without initializing it, we will encounter a “UninitializedPropertyAccessException” exception. To avoid this error, we can also use the isInitialized() method that Kotlin provides for us.<br>
 
 Basic use case of isInitialized.<br>
 As you can see, you can use isInitialized to check if my value is initialized if you need it.<br>
 
+```
+class MainActivity : AppCompatActivity() {
+    //Here is the value we don't want to initialize at declaration time,
+    //So we used the lateinit keyword.
+    private lateinit var myUser: User
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        /**
+        We can check if our value is initialize using isInitialized.
+         */
+        if (this::myUser.isInitialized) {
+            println("MY NAME IS : " + myUser.name)
+        } else {
+            myUser = User("Hüseyin", "Özkoç")
+            println("MY NAME IS : " + myUser.name)
+        }
+    }
+}
+
+data class User(var name: String, var surname: String)
+```
 
 <h3>What is the by Lazy? </h3> <br>
 Lazy initialization is a design pattern that we often come across in the software world. With lazy initialization, we can create objects only the first time that we access them, otherwise we don’t have to initialize them. It ensures that objects that are expensive to create are initialized only where they are to be used, not on the app startup.<br>
@@ -1524,10 +1565,47 @@ lazy in Kotlin is useful in a scenario when we want to create an object inside a
 
 Let’s make an example for better understanding!<br>
 
+```
+class MainActivity : AppCompatActivity() {
+    //Here is the value we don't want to initialize at declaration time,
+    //So we used the lateinit keyword.
+    private lateinit var myButton: Button
 
-Simple use of lazy initialize.<br>
+    /**
+     * Suppose we have this expensive object
+     * that will initialize only when we need it.
+     */
+    private val myUser: User by lazy {
+        print("Lazy initialization")
+        User("Hüseyin", "Özkoç")
+    }
 
-The output of our example above in LogCat. <br>
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        myButton = findViewById(R.id.myButton)
+
+        myButton.setOnClickListener {
+
+            /**
+             * We want this object to be created only once
+             * when the button is clicked, not inside the onCreate() method.
+             * 
+             *  Therefore, the moment we use our myUser value,
+             *  our value will be initialized once and
+             *  we will use that initialized value for all other clicks.
+             */
+            println(myUser.name)
+
+        }
+
+    }
+}
+
+data class User(var name: String, var surname: String)
+```
+
 As we saw in the example above, our value was only initialized once when we tried to access our object, and then we used this initialized object on each click. <br>
 
 <h3>What are the differences between Lateinit and Lazy?</h3> <br>
