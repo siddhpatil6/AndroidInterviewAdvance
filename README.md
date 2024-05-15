@@ -4,20 +4,20 @@
 <h5>What is difference between launch and async ?</h5>
 <h5>Scopes in Kotlin Coroutines ?</h5>
 <h5>Dispatchers in Kotlin Coroutines ?</h5>
-<h5> How can two distinct Android apps interact? </h5>
-<h5>• What is a ContentProvider and what is it typically used for? </h5>
+<h5>How can two distinct Android apps interact? </h5>
+<h5>What is a ContentProvider and what is it typically used for? </h5>
 <h5>what is open keyword in kotlin?</h5>
-<h5>• What is a ContentProvider and what is it typically used for? </h5>
-<h5> what is difference between letinit and lazy </h5>
+<h5>What is a ContentProvider and what is it typically used for? </h5>
+<h5>what is difference between letinit and lazy </h5>
 <h5>coroutineScope vs supervisorScope</h5>
-<h5> What is flow explain? </h5>
+<h5>What is flow explain? </h5>
 <h5>What is companion or object?</h5>
-<h5> what is difference in coroutine than thread </h5>
+<h5>what is difference in coroutine than thread </h5>
 <h5>Scope Functions - </h5>
-<h5> why coroutine is more powerful than thread ?</h5>
+<h5>why coroutine is more powerful than thread ?</h5>
 <h5>if class extending interface having same method name and parameter which interface method will get called ? and if we want to call specific interface than how to call it ?</h5>
 <h5>how to write custom extensions ?</h5>
-<h5> Enum Class Vs Sealed Class ? </h5>
+<h5>Enum Class Vs Sealed Class ? </h5>
 <h5>is there any other way than recreating activity than rotation of app? </h5>
 
 <h1>What is Coroutine?</h1> -
