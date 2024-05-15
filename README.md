@@ -20,6 +20,7 @@
 <h5>Enum Class Vs Sealed Class ? </h5>
 <h5>is there any other way than recreating activity than rotation of app? </h5>
 <h5>What is flow explain? </h5>
+<h5>why we declare function as suspend function in coruotine </h5>
 
 
 <h1>What is Coroutine?</h1> -
