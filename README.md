@@ -1833,3 +1833,20 @@ Changing the device's locale can also recreate the activity if your app supports
 Low Memory: <br> 
 As mentioned earlier, if the system is low on memory, it may destroy and recreate activities to free up resources. <br>
 
+
+<h1>why we declare function as suspend function in coruotine </h1>
+we declare a function as a suspend function when it needs to perform long-running or asynchronous operations inside a coroutine. By marking a function as suspend, we are telling the compiler that this function can be safely called from a coroutine and that it may suspend its execution at some point.  <br>
+
+Here's why we use suspend functions in coroutines: <br>
+
+Asynchronous Operations: Suspend functions allow us to perform asynchronous operations such as network requests, disk I/O, or database queries without blocking the main thread or the coroutine in which they are called. <br>
+
+Sequential Code: Suspend functions can be called in a sequential, imperative style, even though they may perform asynchronous operations internally. This makes the code easier to read and understand compared to callback-based or reactive code. <br>
+
+Cancellation Support: Suspend functions can be cancelled when their coroutine is cancelled. This allows for proper resource management and cleanup when a coroutine is no longer needed. <br>
+
+Exception Handling: Suspend functions can throw exceptions like regular functions, and these exceptions can be caught using try-catch blocks within the coroutine. This makes error handling more straightforward compared to other asynchronous patterns. <br>
+
+Coroutine Context: Suspend functions can access the coroutine's context, including its scope, dispatcher, and other contextual information. This allows for fine-grained control over the execution of the suspend function. <br>
+
+Overall, suspend functions are a key feature of Kotlin coroutines that enable us to write asynchronous code in a more natural and sequential way, making our code more readable, maintainable, and efficient. <br>
