@@ -1839,14 +1839,19 @@ we declare a function as a suspend function when it needs to perform long-runnin
 
 Here's why we use suspend functions in coroutines: <br>
 
-Asynchronous Operations: Suspend functions allow us to perform asynchronous operations such as network requests, disk I/O, or database queries without blocking the main thread or the coroutine in which they are called. <br>
+<h3>Asynchronous Operations: </h3>
+Suspend functions allow us to perform asynchronous operations such as network requests, disk I/O, or database queries without blocking the main thread or the coroutine in which they are called. <br>
 
-Sequential Code: Suspend functions can be called in a sequential, imperative style, even though they may perform asynchronous operations internally. This makes the code easier to read and understand compared to callback-based or reactive code. <br>
+<h3>Sequential Code: </h3>
+Suspend functions can be called in a sequential, imperative style, even though they may perform asynchronous operations internally. This makes the code easier to read and understand compared to callback-based or reactive code. <br>
 
-Cancellation Support: Suspend functions can be cancelled when their coroutine is cancelled. This allows for proper resource management and cleanup when a coroutine is no longer needed. <br>
+<h3>Cancellation Support: </h3>
+Suspend functions can be cancelled when their coroutine is cancelled. This allows for proper resource management and cleanup when a coroutine is no longer needed. <br>
 
-Exception Handling: Suspend functions can throw exceptions like regular functions, and these exceptions can be caught using try-catch blocks within the coroutine. This makes error handling more straightforward compared to other asynchronous patterns. <br>
+<h3>Exception Handling: </h3>
+Suspend functions can throw exceptions like regular functions, and these exceptions can be caught using try-catch blocks within the coroutine. This makes error handling more straightforward compared to other asynchronous patterns. <br>
 
-Coroutine Context: Suspend functions can access the coroutine's context, including its scope, dispatcher, and other contextual information. This allows for fine-grained control over the execution of the suspend function. <br>
+<h3> Coroutine Context: </h3>
+Suspend functions can access the coroutine's context, including its scope, dispatcher, and other contextual information. This allows for fine-grained control over the execution of the suspend function. <br>
 
 Overall, suspend functions are a key feature of Kotlin coroutines that enable us to write asynchronous code in a more natural and sequential way, making our code more readable, maintainable, and efficient. <br>
