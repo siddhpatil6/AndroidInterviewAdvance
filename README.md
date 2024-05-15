@@ -4,6 +4,8 @@
 <h5>What is difference between launch and async ?</h5>
 <h5>Scopes in Kotlin Coroutines ?</h5>
 <h5>Dispatchers in Kotlin Coroutines ?</h5>
+<h5>why we declare function as suspend function in coroutine ? </h5>
+<h5> what is runblocking in coroutine </h5>
 <h5>How can two distinct Android apps interact? </h5>
 <h5>What is a ContentProvider and what is it typically used for? </h5>
 <h5>what is open keyword in kotlin?</h5>
@@ -20,7 +22,6 @@
 <h5>Enum Class Vs Sealed Class ? </h5>
 <h5>is there any other way than recreating activity than rotation of app? </h5>
 <h5>What is flow explain? </h5>
-<h5>why we declare function as suspend function in coroutine ? </h5>
 
 
 <h1>What is Coroutine?</h1> -
@@ -275,6 +276,53 @@ GlobalScope.launch(Dispatchers.Default) {
 
 As the name suggests unconfined dispatcher is not confined to any specific thread. It executes the initial continuation of a coroutine in the current call-frame and lets the coroutine resume in whatever thread that is used by the corresponding suspending function, without mandating any specific threading policy. 
 
+<h1> what is runblocking in coroutine </h1>
+runBlocking is a coroutine builder in Kotlin used to create a new coroutine and block the current thread until the coroutine completes. It is typically used in main functions or in tests to bridge the gap between synchronous and asynchronous code. <br>
+
+Here's a simple example of how runBlocking is used: <br>
+ <br>
+```
+import kotlinx.coroutines.*
+
+fun main() {
+    runBlocking {
+        // This code will be executed in a coroutine
+        delay(1000) // Delay the coroutine for 1 second (non-blocking)
+        println("Coroutine completed")
+    }
+    // The main thread will be blocked until the coroutine inside runBlocking completes
+    println("Main thread completed")
+}
+```
+ <br>
+In this example, runBlocking creates a coroutine that delays for 1 second using delay, which suspends the coroutine without blocking the main thread. The main thread is then blocked until the coroutine completes, and "Coroutine completed" is printed to the console. Finally, "Main thread completed" is printed once the main thread is unblocked. <br>
+
+It's important to note that using runBlocking to block the main thread is generally discouraged in production code, as it can lead to performance issues and should be used sparingly. In most cases, it's better to use non-blocking constructs like launch, async, or suspendCoroutine to handle asynchronous operations in a more efficient manner. <br>
+
+
+<h1>why we declare function as suspend function in coruotine </h1>
+we declare a function as a suspend function when it needs to perform long-running or asynchronous operations inside a coroutine. By marking a function as suspend, we are telling the compiler that this function can be safely called from a coroutine and that it may suspend its execution at some point.  <br>
+
+Here's why we use suspend functions in coroutines: <br>
+
+<h3>Asynchronous Operations: </h3>
+Suspend functions allow us to perform asynchronous operations such as network requests, disk I/O, or database queries without blocking the main thread or the coroutine in which they are called. <br>
+
+<h3>Sequential Code: </h3>
+Suspend functions can be called in a sequential, imperative style, even though they may perform asynchronous operations internally. This makes the code easier to read and understand compared to callback-based or reactive code. <br>
+
+<h3>Cancellation Support: </h3>
+Suspend functions can be cancelled when their coroutine is cancelled. This allows for proper resource management and cleanup when a coroutine is no longer needed. <br>
+
+<h3>Exception Handling: </h3>
+Suspend functions can throw exceptions like regular functions, and these exceptions can be caught using try-catch blocks within the coroutine. This makes error handling more straightforward compared to other asynchronous patterns. <br>
+
+<h3> Coroutine Context: </h3>
+Suspend functions can access the coroutine's context, including its scope, dispatcher, and other contextual information. This allows for fine-grained control over the execution of the suspend function. <br>
+
+Overall, suspend functions are a key feature of Kotlin coroutines that enable us to write asynchronous code in a more natural and sequential way, making our code more readable, maintainable, and efficient. <br>
+
+
 <h1>• How can two distinct Android apps interact? </h1>
 
 Intents: <br>
@@ -397,6 +445,8 @@ if (myService != null) {
 }
 ```
 These steps outline the basic process of creating a bounded service in Android using AIDL for inter-process communication.
+
+
 
 
 <h3>• What is a ContentProvider and what is it typically used for? </h3>
@@ -1834,25 +1884,3 @@ Changing the device's locale can also recreate the activity if your app supports
 Low Memory: <br> 
 As mentioned earlier, if the system is low on memory, it may destroy and recreate activities to free up resources. <br>
 
-
-<h1>why we declare function as suspend function in coruotine </h1>
-we declare a function as a suspend function when it needs to perform long-running or asynchronous operations inside a coroutine. By marking a function as suspend, we are telling the compiler that this function can be safely called from a coroutine and that it may suspend its execution at some point.  <br>
-
-Here's why we use suspend functions in coroutines: <br>
-
-<h3>Asynchronous Operations: </h3>
-Suspend functions allow us to perform asynchronous operations such as network requests, disk I/O, or database queries without blocking the main thread or the coroutine in which they are called. <br>
-
-<h3>Sequential Code: </h3>
-Suspend functions can be called in a sequential, imperative style, even though they may perform asynchronous operations internally. This makes the code easier to read and understand compared to callback-based or reactive code. <br>
-
-<h3>Cancellation Support: </h3>
-Suspend functions can be cancelled when their coroutine is cancelled. This allows for proper resource management and cleanup when a coroutine is no longer needed. <br>
-
-<h3>Exception Handling: </h3>
-Suspend functions can throw exceptions like regular functions, and these exceptions can be caught using try-catch blocks within the coroutine. This makes error handling more straightforward compared to other asynchronous patterns. <br>
-
-<h3> Coroutine Context: </h3>
-Suspend functions can access the coroutine's context, including its scope, dispatcher, and other contextual information. This allows for fine-grained control over the execution of the suspend function. <br>
-
-Overall, suspend functions are a key feature of Kotlin coroutines that enable us to write asynchronous code in a more natural and sequential way, making our code more readable, maintainable, and efficient. <br>
