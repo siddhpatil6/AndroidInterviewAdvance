@@ -12,6 +12,8 @@
 <h5>What is a ContentProvider and what is it typically used for? </h5>
 <h5>what is difference between letinit and lazy </h5>
 <h5>coroutineScope vs supervisorScope</h5>
+<h5> Things to know while using the init block in Kotlin: </h5>
+<h5>withContext in Kotlin Coroutines: </h5>
 <h5>What is flow explain? </h5>
 <h5>What is companion or object?</h5>
 <h5>what is difference in coroutine than thread </h5>
