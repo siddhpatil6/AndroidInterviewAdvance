@@ -1656,6 +1656,10 @@ enum class Direction {
 ```
 
 Sealed Class : <br>
+Sealed classes offer a compelling way to represent restricted class hierarchies, allowing you to define a fixed set of subclasses within a sealed class declaration.  <br>
+On the other hand, enums provide a concise method for defining a finite set of constants.
+
+
 A sealed class is used to represent a restricted hierarchy where all subclasses must be nested inside the sealed class declaration. <br>
 Sealed classes are often used in combination with when expressions to achieve exhaustive checking. <br>
 Sealed classes can have subclasses with additional properties, and each subclass can have its own implementation of methods. <br>
