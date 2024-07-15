@@ -1880,3 +1880,12 @@ Changing the device's locale can also recreate the activity if your app supports
 Low Memory: <br> 
 As mentioned earlier, if the system is low on memory, it may destroy and recreate activities to free up resources. <br>
 
+<h1> What is difference between Plugin and dependancy ? </h1>
+Key Differences: <br>
+ <br>
+<h2> Purpose: </h2> <br>
+Dependencies are essential external components that your project requires to function, whereas plugins are optional components that add specific features or functionalities to a software application.
+<h2> Integration: </h2> <br>
+Dependencies are usually integrated into your project during the build process based on configuration files, while plugins are integrated into an application at runtime or during its setup phase.
+<h2>Usage: </h2> <br>
+Dependencies are typically essential for the basic operation of the software, while plugins provide additional or advanced features that may not be needed by all users or in all scenarios.
