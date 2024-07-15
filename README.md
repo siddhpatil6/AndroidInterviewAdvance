@@ -1882,12 +1882,11 @@ As mentioned earlier, if the system is low on memory, it may destroy and recreat
 
 <h1> What is difference between Plugin and dependancy ? </h1>
 Key Differences: <br>
- <br>
-<h3> Purpose: </h3> <br>
+<h3> Purpose: </h3> 
 Dependencies are essential external components that your project requires to function, whereas plugins are optional components that add specific features or functionalities to a software application.
 
-<h3> Integration: </h3> <br>
+<h3> Integration: </h3> 
 Dependencies are usually integrated into your project during the build process based on configuration files, while plugins are integrated into an application at runtime or during its setup phase.
 
-<h3>Usage: </h3> <br>
+<h3> Usage: </h3>
 Dependencies are typically essential for the basic operation of the software, while plugins provide additional or advanced features that may not be needed by all users or in all scenarios.
