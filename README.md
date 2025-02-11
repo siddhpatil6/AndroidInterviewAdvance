@@ -25,6 +25,43 @@
 <h5>is there any other way than recreating activity than rotation of app? </h5>
 <h5>What is flow explain? </h5>
 
+What is multi level inheritance?
+If A extends B and B Extends C 
+Than how can I access method of C?
+
+What is SSL Pinning?
+
+How can you handle layouts for fold phones?
+
+What is clearTextTraffic?
+
+What is different between let and also?
+
+Why String is mutable?
+
+What is exact difference between string builder and string buffer , explain with example?
+
+Why multiple inheritance is not possible in Java explain with example?
+
+Explain internal working of coroutine?
+
+Explain difference between thread and coroutine?
+
+Explain different dispatchers?
+
+Explain  scope functions?
+
+Explain AES Encryption?
+
+Explain Fragment Lifecycle method when we replace one fragment with another fragment
+
+Explain Lifecycle of Activity when we go from one activity to another activity?
+
+Explain ViewPager and how view pager works to store fragment if there are multiple fragments in viewpager?
+
+How can you protect app from screen sharing?
+
+
 
 <h1>What is Coroutine?</h1> -
 coroutines help to manage long-running tasks that might otherwise block the main thread and cause your app to become unresponsive. 
