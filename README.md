@@ -1,82 +1,83 @@
 <h1>Android Interview Advanced Questions</h1>
-    
+
 <h2>Kotlin Coroutines</h2>
-    <ul>
-        <li>What is a Coroutine?</li>
-        <li>What is the difference between launch and async?</li>
-        <li>What are Scopes in Kotlin Coroutines?</li>
-        <li>What are Dispatchers in Kotlin Coroutines?</li>
-        <li>Why do we declare a function as a suspend function in Coroutines?</li>
-        <li>What is runBlocking in Coroutines?</li>
-        <li>What is coroutineScope vs supervisorScope?</li>
-        <li>What is withContext in Kotlin Coroutines?</li>
-        <li>How is Coroutine different from a Thread?</li>
-        <li>Why is Coroutine more powerful than a Thread?</li>
-        <li>Explain the internal working of Coroutines.</li>
-        <li>Explain different Dispatchers in Coroutines.</li>
-    </ul>
-    
+<ul>
+    <li>What is a Coroutine?</li>
+    <li>What is the difference between launch and async?</li>
+    <li>What are Scopes in Kotlin Coroutines?</li>
+    <li>What are Dispatchers in Kotlin Coroutines?</li>
+    <li>Why do we declare a function as a suspend function in Coroutines?</li>
+    <li>What is runBlocking in Coroutines?</li>
+    <li>What is the difference between coroutineScope and supervisorScope?</li>
+    <li>What is withContext in Kotlin Coroutines?</li>
+    <li>How is a Coroutine different from a Thread?</li>
+    <li>Why is a Coroutine more powerful than a Thread?</li>
+    <li>Explain the internal working of Coroutines.</li>
+    <li>Explain different Dispatchers in Coroutines.</li>
+    <li>What is flow in Kotlin Coroutines?</li>
+</ul>
+
 <h2>Kotlin and Object-Oriented Concepts</h2>
-    <ul>
-        <li>What is the open keyword in Kotlin?</li>
-        <li>What is the difference between lateinit and lazy?</li>
-        <li>What are Scope Functions in Kotlin?</li>
-        <li>What is a companion object in Kotlin?</li>
-        <li>What is the difference between let and also?</li>
-        <li>How to write custom extensions in Kotlin?</li>
-        <li>What is the difference between an Enum Class and a Sealed Class?</li>
-        <li>What should we know when using the init block in Kotlin?</li>
-        <li>If a class extends multiple interfaces with the same method name and parameters, which interface method gets called? How can you call a specific interface method?</li>
-        <li>What is multi-level inheritance?</li>
-        <li>If Class A extends B and B extends C, how can you access a method of C?</li>
-    </ul>
-    
+<ul>
+    <li>What is the open keyword in Kotlin?</li>
+    <li>What is the difference between lateinit and lazy?</li>
+    <li>What are Scope Functions in Kotlin?</li>
+    <li>What is a companion object in Kotlin?</li>
+    <li>What is the difference between let and also?</li>
+    <li>How to write custom extensions in Kotlin?</li>
+    <li>What is the difference between an Enum Class and a Sealed Class?</li>
+    <li>What should we know when using the init block in Kotlin?</li>
+    <li>If a class extends multiple interfaces with the same method name and parameters, which interface method gets called? How can you call a specific interface method?</li>
+    <li>What is multi-level inheritance?</li>
+    <li>If Class A extends B and B extends C, how can you access a method of C?</li>
+</ul>
+
 <h2>Android Concepts</h2>
-    <ul>
-        <li>How can two distinct Android apps interact?</li>
-        <li>What is a ContentProvider, and what is it typically used for?</li>
-        <li>Is there any other way to handle screen rotation without recreating an Activity?</li>
-        <li>What is clearTextTraffic in Android?</li>
-        <li>How can you handle layouts for foldable phones?</li>
-        <li>How can you protect an app from screen sharing?</li>
-        <li>Is it possible to run an Android app in multiple processes?</li>
-        <li>What is AIDL? What are the steps to create a bound service using AIDL?</li>
-    </ul>
-    
+<ul>
+    <li>How can two distinct Android apps interact?</li>
+    <li>What is a ContentProvider, and what is it typically used for?</li>
+    <li>Is there any other way to handle screen rotation without recreating an Activity?</li>
+    <li>What is clearTextTraffic in Android?</li>
+    <li>How can you handle layouts for foldable phones?</li>
+    <li>How can you protect an app from screen sharing?</li>
+    <li>Is it possible to run an Android app in multiple processes?</li>
+    <li>What is AIDL? What are the steps to create a bound service using AIDL?</li>
+</ul>
+
 <h2>Security & Encryption</h2>
-    <ul>
-        <li>What is SSL Pinning?</li>
-        <li>Explain AES Encryption.</li>
-    </ul>
-    
+<ul>
+    <li>What is SSL Pinning?</li>
+    <li>Explain AES Encryption.</li>
+</ul>
+
 <h2>Android Components & Lifecycle</h2>
-    <ul>
-        <li>Explain the Fragment Lifecycle when replacing one Fragment with another.</li>
-        <li>Explain the Activity Lifecycle when transitioning from one Activity to another.</li>
-        <li>Explain ViewPager and how it stores multiple Fragments.</li>
-    </ul>
-    
+<ul>
+    <li>Explain the Fragment Lifecycle when replacing one Fragment with another.</li>
+    <li>Explain the Activity Lifecycle when transitioning from one Activity to another.</li>
+    <li>Explain ViewPager and how it stores multiple Fragments.</li>
+</ul>
+
 <h2>String Handling in Java/Kotlin</h2>
-    <ul>
-        <li>Why is String immutable in Java/Kotlin?</li>
-        <li>What is the exact difference between StringBuilder and StringBuffer? Explain with an example.</li>
-    </ul>
-    
+<ul>
+    <li>Why is String immutable in Java/Kotlin?</li>
+    <li>What is the exact difference between StringBuilder and StringBuffer? Explain with an example.</li>
+</ul>
+
 <h2>Multithreading & Performance</h2>
-    <ul>
-        <li>Why is multiple inheritance not possible in Java? Explain with an example.</li>
-        <li>Explain the difference between Threads and Coroutines.</li>
-        <li>What are the key differences between Plugins and Dependencies in Android?</li>
-    </ul>
-    
+<ul>
+    <li>Why is multiple inheritance not possible in Java? Explain with an example.</li>
+    <li>Explain the difference between Threads and Coroutines.</li>
+    <li>What are the key differences between Plugins and Dependencies in Android?</li>
+</ul>
+
 <h2>Advanced Kotlin Topics</h2>
-    <ul>
-        <li>What is JvmStatic, JvmOverloads, and JvmField in Kotlin?</li>
-        <li>How to find duplicates in an array in Kotlin?</li>
-        <li>What is the difference between an Object and a Companion Object?</li>
-        <li>What are ViewBinding and DataBinding? How do they differ?</li>
-        <li>Can we call a method in a constant declaration?</li>
-   </ul>
+<ul>
+    <li>What is JvmStatic, JvmOverloads, and JvmField in Kotlin?</li>
+    <li>How to find duplicates in an array in Kotlin?</li>
+    <li>What is the difference between an Object and a Companion Object?</li>
+    <li>What are ViewBinding and DataBinding? How do they differ?</li>
+    <li>Can we call a method in a constant declaration?</li>
+</ul>
 
 
 <h1>What is Coroutine?</h1> -
